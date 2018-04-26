@@ -4,4 +4,8 @@
     <TargetFramework>net462</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ReactiveDomain.Foundation" Version="0.8.15" />
+  </ItemGroup>
+
 </Project>
