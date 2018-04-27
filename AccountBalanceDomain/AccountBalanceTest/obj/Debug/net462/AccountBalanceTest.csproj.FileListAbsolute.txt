@@ -141,3 +141,4 @@ C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBa
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\Splat.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\AccountBalanceDomain.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\AccountBalanceDomain.pdb
+C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\dotMemory.Unit.dll

@@ -8,4 +8,8 @@
     <PackageReference Include="ReactiveDomain.Foundation" Version="0.8.15" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Events\" />
+  </ItemGroup>
+
 </Project>

@@ -6,29 +6,37 @@ using ReactiveDomain.Messaging.Bus;
 
 namespace AccountBalanceTest 
 {
-    public class BankAccountCommandHandler : IHandleCommand<CreateAccountCommand>, IDisposable
+    public class BankAccountCommandHandler : IHandleCommand<CreateBankAccountCommand>, IDisposable
     {
-        private IDispatcher bus;
-        private IRepository repo;
-        private IDisposable sub;
+        private IDispatcher _bus;
+        private readonly IRepository _repo;
+        private readonly IDisposable _sub;
 
         public BankAccountCommandHandler(IDispatcher bus, IRepository repo)
         {
-            this.bus = bus;
-            this.repo = repo;
-            this.sub = bus.Subscribe(this);
+            this._bus = bus;
+            this._repo = repo;
+            this._sub = bus.Subscribe(this);
         }
 
         public void Dispose()
         {
-            this.sub.Dispose();
+            this._sub.Dispose();
         }
 
-        public CommandResponse Handle(CreateAccountCommand command)
+        public CommandResponse Handle(CreateBankAccountCommand command)
         {
+            if (_repo.TryGetById<BankAccount>(command.AccountId, out var acc))
+            {
+                throw new InvalidOperationException("Account already exists");
+            }
+
+            var account = BankAccount.Create(command.AccountId, command.AccountHolderName, command);
+            _repo.Save(account);
+
+            
             //command.Fail(null);
             return command.Succeed();
-            //throw new System.NotImplementedException();
         }
     }
 }
