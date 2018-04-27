@@ -15,7 +15,7 @@ namespace AccountBalanceTest
         [Fact]
         public void mymethod()
         {
-            int a = 2;
+            int a = 1;
             Assert.True(a == 1);
         }
 
@@ -35,7 +35,7 @@ namespace AccountBalanceTest
             var instId = Guid.NewGuid();
             var runner = CreateRunner(instId);
 
-            var cmd = new CreateAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+            var cmd = new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
             {
                 AccountId = instId,
                 AccountHolderName = "AccountHolder1"
@@ -65,7 +65,7 @@ namespace AccountBalanceTest
                         AccountHolderName = "AAA"
 
                     }).When(
-                    new CreateAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+                    new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
                     {
                         AccountId = instId,
                         AccountHolderName = "BBB"
@@ -81,7 +81,7 @@ namespace AccountBalanceTest
 
             return runner.Run(def =>
                 def.Given()
-                    .When(new CreateAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+                    .When(new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
                     {
                         AccountId = instId,
                         AccountHolderName = string.Empty

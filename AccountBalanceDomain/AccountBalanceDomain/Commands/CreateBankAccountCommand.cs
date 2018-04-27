@@ -8,12 +8,12 @@ using ReactiveDomain.Messaging;
 
 namespace AccountBalanceDomain
 {
-    public class CreateAccountCommand : Command
+    public class CreateBankAccountCommand : Command
     {
         public Guid AccountId;
         public string AccountHolderName;
 
-        public CreateAccountCommand(CorrelationId correlationId, SourceId sourceId)
+        public CreateBankAccountCommand(CorrelationId correlationId, SourceId sourceId)
             : base(correlationId, sourceId)
         {
         }
