@@ -16,8 +16,7 @@ namespace AccountBalanceDomain
         {
             // call Register() to store all types of operations we need to perform on each type of event
             Register<BankAccountCreatedEvent>(OnBankAccountCreatedEvent);
-            //Register<MoneyAddedEvent>(OnMoneyAddedEvent);
-            //Register<MoneyTakenEvent>(OnMoneyTakenEvent);
+
         }
 
         public static BankAccount Create(Guid id, string accountHolderName, CorrelatedMessage source)
@@ -26,16 +25,21 @@ namespace AccountBalanceDomain
                 throw new InvalidOperationException("Account holder name cannot be empty");
             
             var acc = new BankAccount();
+
             acc.Raise(new BankAccountCreatedEvent(source) {AccountId = id, AccountHolderName = accountHolderName });
+
             return acc;
         }
 
-        public void OnBankAccountCreatedEvent(BankAccountCreatedEvent ev)
+        private void OnBankAccountCreatedEvent(BankAccountCreatedEvent ev)
         {
             Id = ev.AccountId;
-            AccountHolderName = ev.AccountHolderName;
+            //AccountHolderName = ev.AccountHolderName;
             Console.WriteLine("BankAccountCreatedEvent raised for accID: " + ev.AccountId);
         }
+
+
+        //public void OnOver
 
 
     }

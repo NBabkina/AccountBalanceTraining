@@ -10,22 +10,18 @@ using Xunit.ScenarioReporting;
 
 namespace AccountBalanceTest
 {
+    /// <summary>
+    /// uses DummyRepoScenarioRunner for testing
+    /// </summary>
     public class AccountTests
     {
-        [Fact]
-        public void mymethod()
-        {
-            int a = 1;
-            Assert.True(a == 1);
-        }
-
-        static DummyRepoScenarioRunner<BankAccount> CreateRunner(Guid aggregateId)
+       static DummyRepoScenarioRunner<BankAccount> CreateRunner(Guid aggregateId)
         {
             return new DummyRepoScenarioRunner<BankAccount>(
                 aggregateId,
                 (repo, bus) =>
                 {
-                    var handler = new BankAccountCommandHandler(bus, repo);
+                    var handler = new BankAccountCommandHandler(repo, bus);
                 });
         }
 
@@ -88,6 +84,32 @@ namespace AccountBalanceTest
                     }).Throws(new InvalidOperationException("Account holder name cannot be empty"),verifyMessage: false));
 
         }
+
+
+        //[Fact]
+        //public Task can_set_ov_limit()
+        //{
+        //    var instId = Guid.NewGuid();
+        //    var runner = CreateRunner(instId);
+
+        //    return runner.Run(def =>
+        //        def.Given()
+        //            .When(new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+        //            {
+        //                AccountId = instId,
+        //                AccountHolderName = string.Empty
+        //            }).Throws(new InvalidOperationException("Account holder name cannot be empty"), verifyMessage: false));
+        //}
+
+
+        //public Task cannot_set_ov_limit_account_not_exists()
+        //{
+        //}
+
+        //public Task cannot_set_ov_limit_less_than_zero
+        //{
+
+        //}
 
 
 
