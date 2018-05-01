@@ -20,7 +20,9 @@ namespace AccountBalanceDomain
 
         private BankAccount()
         {
-            // call Register() to store all types of operations we need to perform on each type of event
+            // call Register() all operations we need to perform on each type of event
+            // will be used to play back all events for the aggregate
+
             Register<BankAccountCreatedEvent>(ev => 
             {
                 Id = ev.AccountId;
@@ -29,6 +31,7 @@ namespace AccountBalanceDomain
 
             Register<OverdraftLimitIsSetEvent>(ev => { _overdraft_limit = ev.OverdraftLimit; });
             Register<TransferLimitIsSetEvent>(ev => { _transfer_limit = ev.TransferLimit; });
+            Register<AmountDepositedEvent>(ev => { _balance += ev.Amount; });
 
         }
 
@@ -49,7 +52,11 @@ namespace AccountBalanceDomain
             if (overdraftLimit < 0)
                 throw new InvalidOperationException("Overdraft limit must be >= 0");
 
-            this.Raise(new OverdraftLimitIsSetEvent(source) { AccountId = this.Id, OverdraftLimit = overdraftLimit});
+            this.Raise(new OverdraftLimitIsSetEvent(source)
+            {
+                AccountId = this.Id,
+                OverdraftLimit = overdraftLimit
+            });
         }
 
         public void SetTransferLimit(decimal transferLimit, CorrelatedMessage source)
@@ -57,7 +64,24 @@ namespace AccountBalanceDomain
             if (transferLimit < 0)
                 throw new InvalidOperationException("Transfer limit must be >= 0");
 
-            this.Raise(new TransferLimitIsSetEvent(source) { AccountId = this.Id, TransferLimit = transferLimit });
+            this.Raise(new TransferLimitIsSetEvent(source)
+            {
+                AccountId = this.Id,
+                TransferLimit = transferLimit
+            });
+        }
+
+        public void TryDepositAmount(decimal amount, CorrelatedMessage source)
+        {
+            if (amount <= 0)
+                throw new InvalidOperationException("Deposited amount must be > 0");
+
+            this.Raise(new AmountDepositedEvent(source)
+                {
+                    AccountId = this.Id,
+                    Amount = amount
+
+                });
         }
 
     }
