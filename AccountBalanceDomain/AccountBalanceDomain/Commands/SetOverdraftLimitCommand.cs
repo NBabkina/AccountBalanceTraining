@@ -12,10 +12,11 @@ namespace AccountBalanceDomain.Commands
         public Guid AccountId;
         public decimal OverdraftLimit;
 
-        public SetOverdraftLimitCommand(CorrelationId correlationId, SourceId sourceId)
-            : base(correlationId, sourceId)
+        public SetOverdraftLimitCommand()
+            : base(CorrelatedMessage.NewRoot())
         {
         }
+
 
     }
 }

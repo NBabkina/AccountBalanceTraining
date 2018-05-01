@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
+//using AccountBalanceDomain.Commands;
 using AccountBalanceDomain.Events;
 using ReactiveDomain;
 using ReactiveDomain.Messaging;
@@ -9,13 +10,25 @@ namespace AccountBalanceDomain
     public class BankAccount : EventDrivenStateMachine
     {
         //public Guid Id is inherited from base class
-        public string AccountHolderName { get; set; }
+        //public string AccountHolderName { get; set; }
+
+        private decimal _overdraft_limit;
+        private decimal _transfer_limit;
+        private decimal _balance;
+        private decimal _pending_amount;
 
 
         private BankAccount()
         {
             // call Register() to store all types of operations we need to perform on each type of event
-            Register<BankAccountCreatedEvent>(OnBankAccountCreatedEvent);
+            Register<BankAccountCreatedEvent>(ev => 
+            {
+                Id = ev.AccountId;
+                Console.WriteLine("BankAccountCreatedEvent raised for accID: " + ev.AccountId);
+            });
+
+            Register<OverdraftLimitIsSetEvent>(ev => { _overdraft_limit = ev.OverdraftLimit; });
+            Register<TransferLimitIsSetEvent>(ev => { _transfer_limit = ev.TransferLimit; });
 
         }
 
@@ -31,16 +44,21 @@ namespace AccountBalanceDomain
             return acc;
         }
 
-        private void OnBankAccountCreatedEvent(BankAccountCreatedEvent ev)
+        public void SetOverdraftLimit(decimal overdraftLimit, CorrelatedMessage source)
         {
-            Id = ev.AccountId;
-            //AccountHolderName = ev.AccountHolderName;
-            Console.WriteLine("BankAccountCreatedEvent raised for accID: " + ev.AccountId);
+            if (overdraftLimit < 0)
+                throw new InvalidOperationException("Overdraft limit must be >= 0");
+
+            this.Raise(new OverdraftLimitIsSetEvent(source) { AccountId = this.Id, OverdraftLimit = overdraftLimit});
         }
 
+        public void SetTransferLimit(decimal transferLimit, CorrelatedMessage source)
+        {
+            if (transferLimit < 0)
+                throw new InvalidOperationException("Transfer limit must be >= 0");
 
-        //public void OnOver
-
+            this.Raise(new TransferLimitIsSetEvent(source) { AccountId = this.Id, TransferLimit = transferLimit });
+        }
 
     }
 }

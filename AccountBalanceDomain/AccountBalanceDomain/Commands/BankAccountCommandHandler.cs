@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AccountBalanceDomain;
 using AccountBalanceDomain.Commands;
 using ReactiveDomain.Foundation;
@@ -7,7 +8,10 @@ using ReactiveDomain.Messaging.Bus;
 
 namespace AccountBalanceTest 
 {
-    public class BankAccountCommandHandler : IHandleCommand<CreateBankAccountCommand>, IDisposable
+    public class BankAccountCommandHandler : IDisposable, 
+        IHandleCommand<CreateBankAccountCommand>,
+        IHandleCommand<SetOverdraftLimitCommand>,
+        IHandleCommand<SetTransferLimitCommand>
     {
         private IDispatcher _bus;
         private readonly IRepository _repo;
@@ -17,7 +21,14 @@ namespace AccountBalanceTest
         {
             this._bus = bus;
             this._repo = repo;
-            this._sub = bus.Subscribe(this);
+
+            this._sub = new CompositeDisposable
+            {
+                //subscribe the bus to our commands
+                bus.Subscribe<CreateBankAccountCommand>(this),
+                bus.Subscribe<SetOverdraftLimitCommand>(this),
+                bus.Subscribe<SetTransferLimitCommand>(this)
+            };
         }
 
         public void Dispose()
@@ -41,10 +52,10 @@ namespace AccountBalanceTest
 
         public CommandResponse Handle(SetOverdraftLimitCommand command)
         {
-            if(! _repo.TryGetById<BankAccount>(command.AccountId, out var account))
+            if (!_repo.TryGetById<BankAccount>(command.AccountId, out var account))
                 throw new InvalidOperationException("Account does not exist");
 
-            //do smth
+            account.SetOverdraftLimit(command.OverdraftLimit, command);
 
             _repo.Save(account);
 
@@ -56,7 +67,7 @@ namespace AccountBalanceTest
             if (!_repo.TryGetById<BankAccount>(command.AccountId, out var account))
                 throw new InvalidOperationException("Account does not exist");
 
-            /// do smth
+            account.SetTransferLimit(command.TransferLimit, command);
 
             _repo.Save(account);
 
@@ -66,4 +77,29 @@ namespace AccountBalanceTest
 
 
     }
+
+
+
+
+        /// <summary>
+        /// This class exists because ReactiveDomain forces its version of Rx on us, even though
+        /// the bits of it we use do not even use Rx.
+        /// </summary>
+        sealed class CompositeDisposable : List<IDisposable>, IDisposable
+        {
+            public void Dispose()
+            {
+                foreach (var disp in this)
+                {
+                    try
+                    {
+                        disp?.Dispose();
+                    }
+                    catch
+                    {
+                        // Ignore
+                    }
+                }
+            }
+        }
 }

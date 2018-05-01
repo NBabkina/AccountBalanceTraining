@@ -16,7 +16,6 @@ namespace AccountBalanceTest
     /// </summary>
 
     [Collection("AggregateTest")]
-
     public sealed class CreateAccontTests : IDisposable
     {
         readonly Guid _accountId;
@@ -31,30 +30,29 @@ namespace AccountBalanceTest
                 (repository, dispatcher) => new BankAccountCommandHandler(repository, dispatcher));
         }
 
+        public void Dispose() => _runner.Dispose();
+
         [Fact]
-        public async Task CanCreateAccount()
+        public Task CanCreateAccount()
         {
             CreateBankAccountCommand cmd;
-            cmd = new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+            cmd = new CreateBankAccountCommand()
             {
                 AccountId = _accountId,
                 AccountHolderName = "AccountHolder1"
             };
 
-            _runner.Run(
+            return _runner.Run(
                 def => def.Given().When(cmd).Then(
                     new BankAccountCreatedEvent(cmd)
                     {
                         AccountId = cmd.AccountId,
                         AccountHolderName = cmd.AccountHolderName
                     }));
-
-
-           await Task.CompletedTask;
         }
 
         [Fact]
-        public async Task CannotCreateAccountIfExists()
+        public Task CannotCreateAccountIfExists()
         {
             BankAccountCreatedEvent ev = new BankAccountCreatedEvent(CorrelatedMessage.NewRoot())
             {
@@ -62,45 +60,31 @@ namespace AccountBalanceTest
                 AccountHolderName = "AAA"
             };
 
-            CreateBankAccountCommand cmd = new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+            CreateBankAccountCommand cmd = new CreateBankAccountCommand()
             {
                 AccountId = _accountId,
                 AccountHolderName = "BBB"
             };
 
-            _runner.Run(
-                def => def.Given(ev).When(cmd).Throws(new InvalidOperationException("Account already exists"), verifyMessage: false));
-
-            await Task.CompletedTask;
-
+            return _runner.Run(
+                def => def.Given(ev).When(cmd).Throws(
+                    new InvalidOperationException("Account already exists"), verifyMessage: false));
         }
 
         [Fact]
-        public async Task CannotCreateAcountWithEmptyHolder()
+        public Task CannotCreateAcountWithEmptyHolder()
         {
-            CreateBankAccountCommand cmd = new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+            CreateBankAccountCommand cmd = new CreateBankAccountCommand()
             {
                 AccountId = _accountId,
                 AccountHolderName = string.Empty
             };
 
-            _runner.Run(
-                def => def.Given().When(cmd).Throws(new InvalidOperationException("Account holder name cannot be empty"), verifyMessage: false));
+            return _runner.Run(
+                def => def.Given().When(cmd).Throws(
+                    new InvalidOperationException("Account holder name cannot be empty"), verifyMessage: false));
 
-            await Task.CompletedTask;
         }
-
-
-
-
-
-
-        public void Dispose()
-        {
-            _runner.Dispose();
-        }
-
-
     }
 }
 

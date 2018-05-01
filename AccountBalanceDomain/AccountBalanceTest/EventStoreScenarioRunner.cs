@@ -30,7 +30,7 @@ namespace AccountBalanceTest
             _fixture = fixture;
             _streamName = _fixture.StreamNameBuilder.GenerateForAggregate(typeof(TAggregate), _id);
 
-            _bus = new Dispatcher("Test bus", watchSlowMsg: true, slowMsgThreshold: TimeSpan.FromSeconds(1), slowCmdThreshold: TimeSpan.FromSeconds(1));
+            _bus = new Dispatcher("Test bus", watchSlowMsg: true, slowMsgThreshold: TimeSpan.FromSeconds(120), slowCmdThreshold: TimeSpan.FromSeconds(120));
 
             _disposable = init(_fixture.Repository, _bus);
 

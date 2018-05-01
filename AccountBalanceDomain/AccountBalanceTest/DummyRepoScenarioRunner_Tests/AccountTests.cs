@@ -1,7 +1,6 @@
 ﻿using System;
 using Xunit;
 using ReactiveDomain.Messaging;
-using System;
 using System.Threading.Tasks;
 using AccountBalanceDomain;
 using AccountBalanceDomain.Events;
@@ -31,7 +30,8 @@ namespace AccountBalanceTest
             var instId = Guid.NewGuid();
             var runner = CreateRunner(instId);
 
-            var cmd = new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+            var cmd = new CreateBankAccountCommand()
+            //CorrelationId.NewId(), SourceId.NullSourceId()
             {
                 AccountId = instId,
                 AccountHolderName = "AccountHolder1"
@@ -61,8 +61,9 @@ namespace AccountBalanceTest
                         AccountHolderName = "AAA"
 
                     }).When(
-                    new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
-                    {
+            //new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+                    new CreateBankAccountCommand()
+            {
                         AccountId = instId,
                         AccountHolderName = "BBB"
                     }).Throws(new InvalidOperationException("Account already exists"), verifyMessage: false));
@@ -77,7 +78,7 @@ namespace AccountBalanceTest
 
             return runner.Run(def =>
                 def.Given()
-                    .When(new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+                    .When(new CreateBankAccountCommand()
                     {
                         AccountId = instId,
                         AccountHolderName = string.Empty

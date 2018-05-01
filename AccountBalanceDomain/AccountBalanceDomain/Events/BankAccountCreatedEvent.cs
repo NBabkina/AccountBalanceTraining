@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using ReactiveDomain.Messaging;
 
 namespace AccountBalanceDomain.Events
@@ -16,6 +17,11 @@ namespace AccountBalanceDomain.Events
             : base(source)
         {
         }
+
+        [JsonConstructor]
+        public BankAccountCreatedEvent(CorrelationId correlationId, SourceId sourceId)
+            : base(correlationId, sourceId)
+        { }
 
     }
 }

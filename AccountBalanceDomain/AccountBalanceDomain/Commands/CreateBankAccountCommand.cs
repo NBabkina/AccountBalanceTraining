@@ -13,8 +13,13 @@ namespace AccountBalanceDomain
         public Guid AccountId;
         public string AccountHolderName;
 
-        public CreateBankAccountCommand(CorrelationId correlationId, SourceId sourceId)
-            : base(correlationId, sourceId)
+        //public CreateBankAccountCommand(CorrelationId correlationId, SourceId sourceId)
+        //    : base(correlationId, sourceId)
+        //{
+        //}
+
+        public CreateBankAccountCommand()
+            : base(CorrelatedMessage.NewRoot())
         {
         }
 

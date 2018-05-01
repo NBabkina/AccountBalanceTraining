@@ -8,8 +8,8 @@ namespace AccountBalanceDomain.Commands
         public Guid AccountId;
         public decimal TransferLimit;
 
-        public SetTransferLimitCommand(CorrelationId correlationId, SourceId sourceId)
-            : base(correlationId, sourceId)
+        public SetTransferLimitCommand()
+            : base(CorrelatedMessage.NewRoot())
         {
         }
 
