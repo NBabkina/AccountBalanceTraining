@@ -14,12 +14,12 @@ namespace AccountBalanceTest
     /// </summary>
 
     [Collection("AggregateTest")]
-    public sealed class DepositCashTests : IDisposable
+    public sealed class WithdrawCashTests : IDisposable
     {
         readonly Guid _accountId;
         readonly EventStoreScenarioRunner<BankAccount> _runner;
 
-        public DepositCashTests(EventStoreFixture fixture)
+        public WithdrawCashTests(EventStoreFixture fixture)
         {
             _accountId = Guid.NewGuid();
             _runner = new EventStoreScenarioRunner<BankAccount>(
@@ -33,9 +33,9 @@ namespace AccountBalanceTest
         // tests ------------------------------------------
 
         [Fact]
-        public Task CannnotDepositCash_AccountDoesntExist()
+        public Task CannnotWithdrawCash_AccountDoesntExist()
         {
-            DepositCashCommand cmd = new DepositCashCommand()
+            WithdrawCashCommand cmd = new WithdrawCashCommand()
             {
                 AccountId = _accountId,
                 Amount = 1000
@@ -46,7 +46,7 @@ namespace AccountBalanceTest
         }
 
         [Fact]
-        public Task CanDepositCash()
+        public Task CanWithdrawCash()
         {
             var ev = new BankAccountCreatedEvent(CorrelatedMessage.NewRoot())
             {
@@ -54,13 +54,13 @@ namespace AccountBalanceTest
                 AccountHolderName = "AAA"
             };
 
-            DepositCashCommand cmd = new DepositCashCommand()
+            WithdrawCashCommand cmd = new WithdrawCashCommand()
             {
                 AccountId = _accountId,
                 Amount = 1000
             };
 
-            var newEv = new AmountDepositedEvent(cmd)
+            var newEv = new AmountWithdrawnEvent(cmd)
             {
                 AccountId = _accountId,
                 Amount = 1000
@@ -74,7 +74,7 @@ namespace AccountBalanceTest
         [Theory]
         [InlineData(0)]
         [InlineData(-100)]
-        public Task CannotDepositCash_IllegalAmount(decimal am)
+        public Task CannotWithdrawCash_IllegalAmount(decimal am)
         {
             var ev = new BankAccountCreatedEvent(CorrelatedMessage.NewRoot())
             {
@@ -82,18 +82,15 @@ namespace AccountBalanceTest
                 AccountHolderName = "AAA"
             };
 
-            DepositCashCommand cmd = new DepositCashCommand()
+            WithdrawCashCommand cmd = new WithdrawCashCommand()
             {
                 AccountId = _accountId,
                 Amount = am
             };
 
             return _runner.Run(
-                def => def.Given(ev).When(cmd).Throws(new InvalidOperationException("Amount to deposit must be > 0")));
+                def => def.Given(ev).When(cmd).Throws(new InvalidOperationException("Amount to withdraw must be > 0")));
         }
 
     }
-
-
-    
 }

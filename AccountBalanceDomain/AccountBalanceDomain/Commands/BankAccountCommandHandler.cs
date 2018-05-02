@@ -12,7 +12,8 @@ namespace AccountBalanceTest
         IHandleCommand<CreateBankAccountCommand>,
         IHandleCommand<SetOverdraftLimitCommand>,
         IHandleCommand<SetTransferLimitCommand>,
-        IHandleCommand<DepositCashCommand>
+        IHandleCommand<DepositCashCommand>,
+        IHandleCommand<WithdrawCashCommand>
     {
         private IDispatcher _bus;
         private readonly IRepository _repo;
@@ -29,7 +30,8 @@ namespace AccountBalanceTest
                 bus.Subscribe<CreateBankAccountCommand>(this),
                 bus.Subscribe<SetOverdraftLimitCommand>(this),
                 bus.Subscribe<SetTransferLimitCommand>(this),
-                bus.Subscribe<DepositCashCommand>(this)
+                bus.Subscribe<DepositCashCommand>(this),
+                bus.Subscribe<WithdrawCashCommand>(this)
             };
         }
 
@@ -87,6 +89,19 @@ namespace AccountBalanceTest
 
             return command.Succeed();
         }
+
+        public CommandResponse Handle(WithdrawCashCommand command)
+        {
+            if (!_repo.TryGetById<BankAccount>(command.AccountId, out var account))
+                throw new InvalidOperationException("Account does not exist");
+
+            account.TryWithdrawAmount(command.Amount, command);
+
+            _repo.Save(account);
+
+            return command.Succeed();
+        }
+
 
 
 

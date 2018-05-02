@@ -32,6 +32,7 @@ namespace AccountBalanceDomain
             Register<OverdraftLimitIsSetEvent>(ev => { _overdraft_limit = ev.OverdraftLimit; });
             Register<TransferLimitIsSetEvent>(ev => { _transfer_limit = ev.TransferLimit; });
             Register<AmountDepositedEvent>(ev => { _balance += ev.Amount; });
+            Register<AmountWithdrawnEvent>(ev => { _balance -= ev.Amount; });
 
         }
 
@@ -74,7 +75,7 @@ namespace AccountBalanceDomain
         public void TryDepositAmount(decimal amount, CorrelatedMessage source)
         {
             if (amount <= 0)
-                throw new InvalidOperationException("Deposited amount must be > 0");
+                throw new InvalidOperationException("Amount to deposit must be > 0");
 
             this.Raise(new AmountDepositedEvent(source)
                 {
@@ -82,6 +83,19 @@ namespace AccountBalanceDomain
                     Amount = amount
 
                 });
+        }
+
+        public void TryWithdrawAmount(decimal amount, CorrelatedMessage source)
+        {
+            if (amount <= 0)
+                throw new InvalidOperationException("Amount to withdraw must be > 0");
+
+            this.Raise(new AmountWithdrawnEvent(source)
+            {
+                AccountId = this.Id,
+                Amount = amount
+
+            });
         }
 
     }
