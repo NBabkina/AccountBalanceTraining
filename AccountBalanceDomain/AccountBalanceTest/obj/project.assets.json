@@ -179,6 +179,21 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NodaTime/2.3.0-beta02": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Numerics",
+          "System.Xml"
+        ],
+        "compile": {
+          "lib/net45/NodaTime.dll": {}
+        },
+        "runtime": {
+          "lib/net45/NodaTime.dll": {}
+        }
+      },
       "ReactiveDomain.Core/0.8.15": {
         "type": "package",
         "compile": {
@@ -470,6 +485,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.6.2",
         "dependencies": {
+          "NodaTime": "2.3.0-beta02",
           "ReactiveDomain.Foundation": "0.8.15"
         },
         "compile": {
@@ -810,6 +826,21 @@
         "newtonsoft.json.10.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
+      ]
+    },
+    "NodaTime/2.3.0-beta02": {
+      "sha512": "0aZz1rUSpFI+2djPBeVI6JyihurtxEaU64Fs9GxGXvUokkk/3OxZsRXA2aKo97YrFRMVgdDf8ssZtU8lHt2wPA==",
+      "type": "package",
+      "path": "nodatime/2.3.0-beta02",
+      "files": [
+        "lib/net45/NodaTime.dll",
+        "lib/net45/NodaTime.pdb",
+        "lib/net45/NodaTime.xml",
+        "lib/netstandard1.3/NodaTime.dll",
+        "lib/netstandard1.3/NodaTime.pdb",
+        "lib/netstandard1.3/NodaTime.xml",
+        "nodatime.2.3.0-beta02.nupkg.sha512",
+        "nodatime.nuspec"
       ]
     },
     "ReactiveDomain.Core/0.8.15": {

@@ -1,6 +1,6 @@
 ﻿using System;
-using AccountBalanceDomain;
 using System.Threading.Tasks;
+using AccountBalanceDomain;
 using AccountBalanceDomain.Commands;
 using AccountBalanceDomain.Events;
 using ReactiveDomain.Messaging;
@@ -14,12 +14,13 @@ namespace AccountBalanceTest
     /// </summary>
 
     [Collection("AggregateTest")]
-    public sealed class WithdrawCashTests : IDisposable
+
+    public sealed class SetupAccountDailyTests : IDisposable
     {
         readonly Guid _accountId;
         readonly EventStoreScenarioRunner<Account> _runner;
 
-        public WithdrawCashTests(EventStoreFixture fixture)
+        public SetupAccountDailyTests(EventStoreFixture fixture)
         {
             _accountId = Guid.NewGuid();
             _runner = new EventStoreScenarioRunner<Account>(
@@ -33,12 +34,11 @@ namespace AccountBalanceTest
         // tests ------------------------------------------
 
         [Fact]
-        public Task CannnotWithdrawCash_AccountDoesntExist()
+        public Task CannotSetupAccountDaily_AccountDoesntExist()
         {
-            WithdrawCashCommand cmd = new WithdrawCashCommand()
+            SetupAccountDailyCommand cmd = new SetupAccountDailyCommand()
             {
                 AccountId = _accountId,
-                Amount = 1000
             };
 
             return _runner.Run(
@@ -46,50 +46,58 @@ namespace AccountBalanceTest
         }
 
         [Fact]
-        public Task CanWithdrawCash()
+        public Task CanSetupAccountDaily()
         {
-            var ev = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
+            var ev1 = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
             {
                 AccountId = _accountId,
                 AccountHolderName = "AAA"
             };
 
-            WithdrawCashCommand cmd = new WithdrawCashCommand()
+            var ev2 = new ChequeDepositedEvent(CorrelatedMessage.NewRoot())
             {
                 AccountId = _accountId,
-                Amount = 1000
+                Amount = 100
             };
 
-            var newEv = new AmountWithdrawnEvent(cmd)
+            var ev3 = new ChequeDepositedEvent(CorrelatedMessage.NewRoot())
             {
                 AccountId = _accountId,
-                Amount = 1000
+                Amount = 200
+            };
+
+            var cmd = new SetupAccountDailyCommand()
+            {
+                AccountId = _accountId,
+            };
+
+            var newEv = new ChequesClearedEvent(cmd)
+            {
+                AccountId = _accountId,
+                Amount = 300
             };
 
             return _runner.Run(
-                def => def.Given(ev).When(cmd).Then(newEv));
+                def => def.Given(ev1, ev2, ev3).When(cmd).Then(newEv));
         }
 
 
-        [Theory]
-        [InlineData(0)]
-        [InlineData(-100)]
-        public Task CannotWithdrawCash_IllegalAmount(decimal am)
+        [Fact]
+        public Task CanSetupAccountDaily_NoPendingAmount()
         {
-            var ev = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
+            var ev1 = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
             {
                 AccountId = _accountId,
                 AccountHolderName = "AAA"
             };
 
-            WithdrawCashCommand cmd = new WithdrawCashCommand()
+            var cmd = new SetupAccountDailyCommand()
             {
                 AccountId = _accountId,
-                Amount = am
             };
 
             return _runner.Run(
-                def => def.Given(ev).When(cmd).Throws(new InvalidOperationException("Amount to withdraw must be > 0")));
+                def => def.Given(ev1).When(cmd).Then());
         }
 
     }

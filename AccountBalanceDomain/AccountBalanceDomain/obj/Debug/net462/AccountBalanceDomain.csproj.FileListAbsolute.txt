@@ -24,3 +24,4 @@ C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBa
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\obj\Debug\net462\AccountBalanceDomain.csproj.CopyComplete
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\obj\Debug\net462\AccountBalanceDomain.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\obj\Debug\net462\AccountBalanceDomain.pdb
+C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\bin\Debug\net462\NodaTime.dll

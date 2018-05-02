@@ -8,17 +8,12 @@ using ReactiveDomain.Messaging;
 
 namespace AccountBalanceDomain
 {
-    public class CreateBankAccountCommand : Command
+    public class CreateAccountCommand : Command
     {
         public Guid AccountId;
         public string AccountHolderName;
 
-        //public CreateBankAccountCommand(CorrelationId correlationId, SourceId sourceId)
-        //    : base(correlationId, sourceId)
-        //{
-        //}
-
-        public CreateBankAccountCommand()
+        public CreateAccountCommand()
             : base(CorrelatedMessage.NewRoot())
         {
         }

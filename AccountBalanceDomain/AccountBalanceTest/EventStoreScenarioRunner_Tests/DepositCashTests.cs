@@ -17,15 +17,15 @@ namespace AccountBalanceTest
     public sealed class DepositCashTests : IDisposable
     {
         readonly Guid _accountId;
-        readonly EventStoreScenarioRunner<BankAccount> _runner;
+        readonly EventStoreScenarioRunner<Account> _runner;
 
         public DepositCashTests(EventStoreFixture fixture)
         {
             _accountId = Guid.NewGuid();
-            _runner = new EventStoreScenarioRunner<BankAccount>(
+            _runner = new EventStoreScenarioRunner<Account>(
                 _accountId,
                 fixture,
-                (repository, dispatcher) => new BankAccountCommandHandler(repository, dispatcher));
+                (repository, dispatcher) => new AccountCommandHandler(repository, dispatcher));
         }
 
         public void Dispose() => _runner.Dispose();
@@ -48,7 +48,7 @@ namespace AccountBalanceTest
         [Fact]
         public Task CanDepositCash()
         {
-            var ev = new BankAccountCreatedEvent(CorrelatedMessage.NewRoot())
+            var ev = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
             {
                 AccountId = _accountId,
                 AccountHolderName = "AAA"
@@ -76,7 +76,7 @@ namespace AccountBalanceTest
         [InlineData(-100)]
         public Task CannotDepositCash_IllegalAmount(decimal am)
         {
-            var ev = new BankAccountCreatedEvent(CorrelatedMessage.NewRoot())
+            var ev = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
             {
                 AccountId = _accountId,
                 AccountHolderName = "AAA"

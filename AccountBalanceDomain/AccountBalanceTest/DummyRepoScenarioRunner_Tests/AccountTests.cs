@@ -14,13 +14,13 @@ namespace AccountBalanceTest
     /// </summary>
     public class AccountTests
     {
-       static DummyRepoScenarioRunner<BankAccount> CreateRunner(Guid aggregateId)
+       static DummyRepoScenarioRunner<Account> CreateRunner(Guid aggregateId)
         {
-            return new DummyRepoScenarioRunner<BankAccount>(
+            return new DummyRepoScenarioRunner<Account>(
                 aggregateId,
                 (repo, bus) =>
                 {
-                    var handler = new BankAccountCommandHandler(repo, bus);
+                    var handler = new AccountCommandHandler(repo, bus);
                 });
         }
 
@@ -30,7 +30,7 @@ namespace AccountBalanceTest
             var instId = Guid.NewGuid();
             var runner = CreateRunner(instId);
 
-            var cmd = new CreateBankAccountCommand()
+            var cmd = new CreateAccountCommand()
             //CorrelationId.NewId(), SourceId.NullSourceId()
             {
                 AccountId = instId,
@@ -39,7 +39,7 @@ namespace AccountBalanceTest
 
             return runner.Run(
                 def => def.Given().When(cmd).Then(
-                    new BankAccountCreatedEvent(cmd)
+                    new AccountCreatedEvent(cmd)
                     {
                         AccountId = instId,
                         AccountHolderName = "AccountHolder1"
@@ -55,14 +55,14 @@ namespace AccountBalanceTest
 
             return runner.Run(
                 def => def.Given(
-                    new BankAccountCreatedEvent(CorrelatedMessage.NewRoot())
+                    new AccountCreatedEvent(CorrelatedMessage.NewRoot())
                     {
                         AccountId = instId,
                         AccountHolderName = "AAA"
 
                     }).When(
-            //new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
-                    new CreateBankAccountCommand()
+            //new CreateAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+                    new CreateAccountCommand()
             {
                         AccountId = instId,
                         AccountHolderName = "BBB"
@@ -78,7 +78,7 @@ namespace AccountBalanceTest
 
             return runner.Run(def =>
                 def.Given()
-                    .When(new CreateBankAccountCommand()
+                    .When(new CreateAccountCommand()
                     {
                         AccountId = instId,
                         AccountHolderName = string.Empty
@@ -95,7 +95,7 @@ namespace AccountBalanceTest
 
         //    return runner.Run(def =>
         //        def.Given()
-        //            .When(new CreateBankAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
+        //            .When(new CreateAccountCommand(CorrelationId.NewId(), SourceId.NullSourceId())
         //            {
         //                AccountId = instId,
         //                AccountHolderName = string.Empty

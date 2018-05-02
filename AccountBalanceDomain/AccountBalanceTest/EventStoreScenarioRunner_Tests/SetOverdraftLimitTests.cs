@@ -18,15 +18,15 @@ namespace AccountBalanceTest
     public sealed class SetOverdraftLimitTests : IDisposable
     {
         readonly Guid _accountId;
-        readonly EventStoreScenarioRunner<BankAccount> _runner;
+        readonly EventStoreScenarioRunner<Account> _runner;
 
         public SetOverdraftLimitTests(EventStoreFixture fixture)
         {
             _accountId = Guid.NewGuid();
-            _runner = new EventStoreScenarioRunner<BankAccount>(
+            _runner = new EventStoreScenarioRunner<Account>(
                 _accountId,
                 fixture,
-                (repository, dispatcher) => new BankAccountCommandHandler(repository, dispatcher));
+                (repository, dispatcher) => new AccountCommandHandler(repository, dispatcher));
         }
 
         public void Dispose() => _runner.Dispose();
@@ -53,7 +53,7 @@ namespace AccountBalanceTest
         [InlineData(1000000)]
         public Task CanSetOverdraftLimit(decimal ovLimit)
         {
-            var ev = new BankAccountCreatedEvent(CorrelatedMessage.NewRoot())
+            var ev = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
             {
                 AccountId = _accountId,
                 AccountHolderName = "AAA"
@@ -79,7 +79,7 @@ namespace AccountBalanceTest
         [Fact]
         public Task CannnotSetOverdraftLimit_NegativeValue()
         {
-            var ev = new BankAccountCreatedEvent(CorrelatedMessage.NewRoot())
+            var ev = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
             {
                 AccountId = _accountId,
                 AccountHolderName = "AAA"

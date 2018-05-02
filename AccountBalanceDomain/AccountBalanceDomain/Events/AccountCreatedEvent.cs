@@ -8,18 +8,18 @@ using ReactiveDomain.Messaging;
 
 namespace AccountBalanceDomain.Events
 {
-    public class BankAccountCreatedEvent : Event
+    public class AccountCreatedEvent : Event
     {
         public Guid AccountId { get; set; }
         public string AccountHolderName { get; set; }
 
-        public BankAccountCreatedEvent(CorrelatedMessage source)
+        public AccountCreatedEvent(CorrelatedMessage source)
             : base(source)
         {
         }
 
         [JsonConstructor]
-        public BankAccountCreatedEvent(CorrelationId correlationId, SourceId sourceId)
+        public AccountCreatedEvent(CorrelationId correlationId, SourceId sourceId)
             : base(correlationId, sourceId)
         { }
 

@@ -19,15 +19,15 @@ namespace AccountBalanceTest
     public sealed class CreateAccontTests : IDisposable
     {
         readonly Guid _accountId;
-        readonly EventStoreScenarioRunner<BankAccount> _runner;
+        readonly EventStoreScenarioRunner<Account> _runner;
 
         public CreateAccontTests(EventStoreFixture fixture)
         {
             _accountId = Guid.NewGuid();
-            _runner = new EventStoreScenarioRunner<BankAccount>(
+            _runner = new EventStoreScenarioRunner<Account>(
                 _accountId,
                 fixture,
-                (repository, dispatcher) => new BankAccountCommandHandler(repository, dispatcher));
+                (repository, dispatcher) => new AccountCommandHandler(repository, dispatcher));
         }
 
         public void Dispose() => _runner.Dispose();
@@ -35,8 +35,8 @@ namespace AccountBalanceTest
         [Fact]
         public Task CanCreateAccount()
         {
-            CreateBankAccountCommand cmd;
-            cmd = new CreateBankAccountCommand()
+            CreateAccountCommand cmd;
+            cmd = new CreateAccountCommand()
             {
                 AccountId = _accountId,
                 AccountHolderName = "AccountHolder1"
@@ -44,7 +44,7 @@ namespace AccountBalanceTest
 
             return _runner.Run(
                 def => def.Given().When(cmd).Then(
-                    new BankAccountCreatedEvent(cmd)
+                    new AccountCreatedEvent(cmd)
                     {
                         AccountId = cmd.AccountId,
                         AccountHolderName = cmd.AccountHolderName
@@ -54,13 +54,13 @@ namespace AccountBalanceTest
         [Fact]
         public Task CannotCreateAccountIfExists()
         {
-            BankAccountCreatedEvent ev = new BankAccountCreatedEvent(CorrelatedMessage.NewRoot())
+            AccountCreatedEvent ev = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
             {
                 AccountId = _accountId,
                 AccountHolderName = "AAA"
             };
 
-            CreateBankAccountCommand cmd = new CreateBankAccountCommand()
+            CreateAccountCommand cmd = new CreateAccountCommand()
             {
                 AccountId = _accountId,
                 AccountHolderName = "BBB"
@@ -74,7 +74,7 @@ namespace AccountBalanceTest
         [Fact]
         public Task CannotCreateAcountWithEmptyHolder()
         {
-            CreateBankAccountCommand cmd = new CreateBankAccountCommand()
+            CreateAccountCommand cmd = new CreateAccountCommand()
             {
                 AccountId = _accountId,
                 AccountHolderName = string.Empty

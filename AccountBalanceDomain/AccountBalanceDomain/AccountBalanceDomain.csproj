@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NodaTime" Version="2.3.0-beta02" />
     <PackageReference Include="ReactiveDomain.Foundation" Version="0.8.15" />
   </ItemGroup>
 
