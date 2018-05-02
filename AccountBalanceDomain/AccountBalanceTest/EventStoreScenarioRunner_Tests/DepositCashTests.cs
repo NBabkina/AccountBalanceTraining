@@ -70,6 +70,42 @@ namespace AccountBalanceTest
                 def => def.Given(ev).When(cmd).Then(newEv));
         }
 
+        [Fact]
+        public Task CanDepositCashAndUnblock()
+        {
+            var ev1 = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
+            {
+                AccountId = _accountId,
+                AccountHolderName = "AAA"
+            };
+
+            var ev2 = new AccountBlockedEvent(CorrelatedMessage.NewRoot())
+            {
+                AccountId = _accountId,
+            };
+
+            DepositCashCommand cmd = new DepositCashCommand()
+            {
+                AccountId = _accountId,
+                Amount = 1000
+            };
+
+            var newEv1 = new AmountDepositedEvent(cmd)
+            {
+                AccountId = _accountId,
+                Amount = 1000
+            };
+
+            var newEv2 = new AccountUnblockedEvent(cmd)
+            {
+                AccountId = _accountId
+
+            };
+
+            return _runner.Run(
+                def => def.Given(ev1, ev2).When(cmd).Then(newEv1, newEv2));
+        }
+
 
         [Theory]
         [InlineData(0)]

@@ -3,12 +3,12 @@ using ReactiveDomain.Messaging;
 
 namespace AccountBalanceDomain.Commands
 {
-    public class WithdrawWireTransfer : Command
+    public class WithdrawWireTransferCommand : Command
     {
         public Guid AccountId;
         public decimal Amount;
 
-        public WithdrawWireTransfer()
+        public WithdrawWireTransferCommand()
             : base(CorrelatedMessage.NewRoot())
         {
         }

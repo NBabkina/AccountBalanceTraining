@@ -44,6 +44,8 @@ namespace AccountBalanceDomain
                 _balance += _pending_amount;
                 _pending_amount = 0;
             });
+            Register<AccountBlockedEvent>(ev => { _isBlocked = true; });
+            Register<AccountUnblockedEvent>(ev => { _isBlocked = false; });
 
         }
 
@@ -94,6 +96,12 @@ namespace AccountBalanceDomain
                     Amount = amount
 
                 });
+
+            if (_isBlocked)
+                this.Raise(new AccountUnblockedEvent(source)
+                {
+                    AccountId = this.Id
+                });
         }
 
         public void TryWithdrawAmount(decimal amount, CorrelatedMessage source)
@@ -101,12 +109,22 @@ namespace AccountBalanceDomain
             if (amount <= 0)
                 throw new InvalidOperationException("Amount to withdraw must be > 0");
 
-            this.Raise(new AmountWithdrawnEvent(source)
+            if (amount <= (_balance + _overdraft_limit))
             {
-                AccountId = this.Id,
-                Amount = amount
+                this.Raise(new AmountWithdrawnEvent(source)
+                {
+                    AccountId = this.Id,
+                    Amount = amount
 
-            });
+                });
+            }
+            else
+            {
+                this.Raise(new AccountBlockedEvent(source)
+                {
+                    AccountId = this.Id
+                });
+            }
         }
 
         public void TryDepositCheque(decimal amount, CorrelatedMessage source)
@@ -141,5 +159,32 @@ namespace AccountBalanceDomain
         }
 
 
+        public void TryWithdrawWireTransfer(decimal amount, CorrelatedMessage source)
+        {
+            if (amount <= 0)
+                throw new InvalidOperationException("Wire transfer amount must be > 0");
+
+            if (_transfer_limit == 0)
+                throw new InvalidOperationException("Wire transfer limit is set to 0");
+
+            if (amount <= (_transfer_limit - _used_transfer_limit))
+            {
+                _used_transfer_limit += amount;
+                this.Raise(new AmountWithdrawnEvent(source)
+                {
+                    AccountId = this.Id,
+                    Amount = amount
+
+                });
+            }
+            else
+            {
+                this.Raise(new AccountBlockedEvent(source)
+                {
+                    AccountId = this.Id
+                });
+            }
+
+        }
     }
 }

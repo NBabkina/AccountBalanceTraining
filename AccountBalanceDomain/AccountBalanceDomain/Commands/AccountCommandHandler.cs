@@ -16,7 +16,8 @@ namespace AccountBalanceTest
         IHandleCommand<DepositCashCommand>,
         IHandleCommand<WithdrawCashCommand>,
         IHandleCommand<DepositChequeCommand>,
-        IHandleCommand<SetupAccountDailyCommand>
+        IHandleCommand<SetupAccountDailyCommand>,
+        IHandleCommand<WithdrawWireTransferCommand>
     {
         private IDispatcher _bus;
         private readonly IRepository _repo;
@@ -42,7 +43,8 @@ namespace AccountBalanceTest
                 bus.Subscribe<DepositCashCommand>(this),
                 bus.Subscribe<WithdrawCashCommand>(this),
                 bus.Subscribe<DepositChequeCommand>(this),
-                bus.Subscribe<SetupAccountDailyCommand>(this)
+                bus.Subscribe<SetupAccountDailyCommand>(this),
+                bus.Subscribe<WithdrawWireTransferCommand>(this)
             };
         }
 
@@ -138,7 +140,17 @@ namespace AccountBalanceTest
             return command.Succeed();
         }
 
+        public CommandResponse Handle(WithdrawWireTransferCommand command)
+        {
+            if (!_repo.TryGetById<Account>(command.AccountId, out var account))
+                throw new InvalidOperationException("Account does not exist");
 
+            account.TryWithdrawWireTransfer(command.Amount, command);
+
+            _repo.Save(account);
+
+            return command.Succeed();
+        }
 
     }
 

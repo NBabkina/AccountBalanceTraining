@@ -45,29 +45,73 @@ namespace AccountBalanceTest
                 def => def.Given().When(cmd).Throws(new InvalidOperationException("Account does not exist")));
         }
 
-        [Fact]
-        public Task CanWithdrawCash()
+        [Theory]
+        [InlineData(10)]
+        [InlineData(1000)]
+        public Task CanWithdrawCash(decimal am)
         {
-            var ev = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
+            var ev1 = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
             {
                 AccountId = _accountId,
                 AccountHolderName = "AAA"
             };
 
+            var ev2 = new OverdraftLimitIsSetEvent(CorrelatedMessage.NewRoot())
+            {
+                AccountId = _accountId,
+                OverdraftLimit = 1000
+            };
+
             WithdrawCashCommand cmd = new WithdrawCashCommand()
             {
                 AccountId = _accountId,
-                Amount = 1000
+                Amount = am
             };
 
             var newEv = new AmountWithdrawnEvent(cmd)
             {
                 AccountId = _accountId,
-                Amount = 1000
+                Amount = am
             };
 
             return _runner.Run(
-                def => def.Given(ev).When(cmd).Then(newEv));
+                def => def.Given(ev1, ev2).When(cmd).Then(newEv));
+        }
+
+        [Fact]
+        public Task CannotWithdrawCash_EverdraftLimitexceeded()
+        {
+            var ev1 = new AccountCreatedEvent(CorrelatedMessage.NewRoot())
+            {
+                AccountId = _accountId,
+                AccountHolderName = "AAA"
+            };
+
+            var ev2 = new OverdraftLimitIsSetEvent(CorrelatedMessage.NewRoot())
+            {
+                AccountId = _accountId,
+                OverdraftLimit = 1000
+            };
+
+            var ev3 = new AmountDepositedEvent(CorrelatedMessage.NewRoot())
+            {
+                AccountId = _accountId,
+                Amount = 100
+            };
+
+            WithdrawCashCommand cmd = new WithdrawCashCommand()
+            {
+                AccountId = _accountId,
+                Amount = 2000
+            };
+
+            var newEv = new AccountBlockedEvent(cmd)
+            {
+                AccountId = _accountId,
+            };
+
+            return _runner.Run(
+                def => def.Given(ev1, ev2, ev3).When(cmd).Then(newEv));
         }
 
 
