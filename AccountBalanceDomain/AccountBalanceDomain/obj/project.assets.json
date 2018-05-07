@@ -38,7 +38,7 @@
           "lib/net45/_._": {}
         }
       },
-      "Newtonsoft.Json/10.0.3": {
+      "Newtonsoft.Json/11.0.2": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -62,7 +62,7 @@
           "lib/net45/NodaTime.dll": {}
         }
       },
-      "ReactiveDomain.Core/0.8.15": {
+      "ReactiveDomain.Core/0.8.17": {
         "type": "package",
         "compile": {
           "lib/net462/ReactiveDomain.Core.dll": {}
@@ -71,15 +71,14 @@
           "lib/net462/ReactiveDomain.Core.dll": {}
         }
       },
-      "ReactiveDomain.Foundation/0.8.15": {
+      "ReactiveDomain.Foundation/0.8.17": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.4.1",
-          "Newtonsoft.Json": "10.0.3",
-          "ReactiveDomain.Messaging": "0.8.15",
-          "ReactiveDomain.Persistence": "0.8.15",
-          "reactiveui": "7.4.0",
-          "xunit.core": "2.3.1"
+          "Newtonsoft.Json": "11.0.2",
+          "ReactiveDomain.Messaging": "0.8.17",
+          "ReactiveDomain.Persistence": "0.8.17",
+          "reactiveui": "7.4.0"
         },
         "frameworkAssemblies": [
           "PresentationFramework"
@@ -91,12 +90,12 @@
           "lib/net462/ReactiveDomain.Foundation.dll": {}
         }
       },
-      "ReactiveDomain.Messaging/0.8.15": {
+      "ReactiveDomain.Messaging/0.8.17": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.4.1",
-          "Newtonsoft.Json": "10.0.3",
-          "ReactiveDomain.Core": "0.8.15"
+          "Newtonsoft.Json": "11.0.2",
+          "ReactiveDomain.Core": "0.8.17"
         },
         "compile": {
           "lib/net462/ReactiveDomain.Messaging.dll": {}
@@ -105,14 +104,14 @@
           "lib/net462/ReactiveDomain.Messaging.dll": {}
         }
       },
-      "ReactiveDomain.Persistence/0.8.15": {
+      "ReactiveDomain.Persistence/0.8.17": {
         "type": "package",
         "dependencies": {
           "EventStore.Client": "4.1.0",
           "EventStore.Client.Embedded": "4.1.0",
           "Microsoft.CSharp": "4.4.1",
-          "Newtonsoft.Json": "10.0.3",
-          "ReactiveDomain.Core": "0.8.15"
+          "Newtonsoft.Json": "11.0.2",
+          "ReactiveDomain.Core": "0.8.17"
         },
         "compile": {
           "lib/net462/ReactiveDomain.Persistence.dll": {}
@@ -220,52 +219,6 @@
         "runtime": {
           "lib/Net45/Splat.dll": {}
         }
-      },
-      "xunit.abstractions/2.0.1": {
-        "type": "package",
-        "compile": {
-          "lib/net35/xunit.abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net35/xunit.abstractions.dll": {}
-        }
-      },
-      "xunit.core/2.3.1": {
-        "type": "package",
-        "dependencies": {
-          "xunit.extensibility.core": "[2.3.1]",
-          "xunit.extensibility.execution": "[2.3.1]"
-        },
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
-        }
-      },
-      "xunit.extensibility.core/2.3.1": {
-        "type": "package",
-        "dependencies": {
-          "xunit.abstractions": "2.0.1"
-        },
-        "compile": {
-          "lib/netstandard1.1/xunit.core.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.1/xunit.core.dll": {}
-        }
-      },
-      "xunit.extensibility.execution/2.3.1": {
-        "type": "package",
-        "dependencies": {
-          "xunit.extensibility.core": "[2.3.1]"
-        },
-        "compile": {
-          "lib/net452/xunit.execution.desktop.dll": {}
-        },
-        "runtime": {
-          "lib/net452/xunit.execution.desktop.dll": {}
-        }
       }
     }
   },
@@ -362,10 +315,10 @@
         "version.txt"
       ]
     },
-    "Newtonsoft.Json/10.0.3": {
-      "sha512": "hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
+    "Newtonsoft.Json/11.0.2": {
+      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
       "type": "package",
-      "path": "newtonsoft.json/10.0.3",
+      "path": "newtonsoft.json/11.0.2",
       "files": [
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
@@ -380,13 +333,14 @@
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.10.0.3.nupkg.sha512",
-        "newtonsoft.json.nuspec",
-        "tools/install.ps1"
+        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.nuspec"
       ]
     },
     "NodaTime/2.3.0-beta02": {
@@ -404,51 +358,51 @@
         "nodatime.nuspec"
       ]
     },
-    "ReactiveDomain.Core/0.8.15": {
-      "sha512": "F6Z9IW+P1WpduHMl41USucmYa/8RHL6+CyBgvI01yOhXMXuWS3oo5SACiSbQvRCb72Em+y3p9kQuDLJK57yQTw==",
+    "ReactiveDomain.Core/0.8.17": {
+      "sha512": "F8ts0JQQz+EE7ChA0woVBOPyD/LtKMGuAFYK44gcEPb1Lu8hFbrClbYR8TW9KHeEKlKZryjKfzObbhjPdnWBPg==",
       "type": "package",
-      "path": "reactivedomain.core/0.8.15",
+      "path": "reactivedomain.core/0.8.17",
       "files": [
         "lib/net452/ReactiveDomain.Core.dll",
         "lib/net462/ReactiveDomain.Core.dll",
         "lib/netstandard2.0/ReactiveDomain.Core.dll",
-        "reactivedomain.core.0.8.15.nupkg.sha512",
+        "reactivedomain.core.0.8.17.nupkg.sha512",
         "reactivedomain.core.nuspec"
       ]
     },
-    "ReactiveDomain.Foundation/0.8.15": {
-      "sha512": "oM4Vz+Xo+XGratxvq0fi4/l0XLcUiBESdAotcRgtLHKEO8JC5KnN6hekvFb1u59HIvWYKnaodEqnNh/+lBDyfA==",
+    "ReactiveDomain.Foundation/0.8.17": {
+      "sha512": "LoyloNg639/AVm5hkY2zszPz7OX8rAW/UoYIRNbEyKcVPK0EEQnoW2nwIPgnETzsQVl44izH3wZkoY9UcdPoGw==",
       "type": "package",
-      "path": "reactivedomain.foundation/0.8.15",
+      "path": "reactivedomain.foundation/0.8.17",
       "files": [
         "lib/net452/ReactiveDomain.Foundation.dll",
         "lib/net462/ReactiveDomain.Foundation.dll",
         "lib/netstandard2.0/ReactiveDomain.Foundation.dll",
-        "reactivedomain.foundation.0.8.15.nupkg.sha512",
+        "reactivedomain.foundation.0.8.17.nupkg.sha512",
         "reactivedomain.foundation.nuspec"
       ]
     },
-    "ReactiveDomain.Messaging/0.8.15": {
-      "sha512": "8X1UhYDgZVl8zfgTIsryzN+assiihDcPU+g5hO2eFj8jSqDoIlMYQDSFU22hoVcsHkkG3LmLH4S/X2kG9tmvlg==",
+    "ReactiveDomain.Messaging/0.8.17": {
+      "sha512": "+se8Wisjgz8u2rpchEDWqa0FPBzMi4pA3GWiO3Gr3rUVRWqKpAGDAjcsN6Ka1/OWp+IEWdzpssTUuMEGg/KONQ==",
       "type": "package",
-      "path": "reactivedomain.messaging/0.8.15",
+      "path": "reactivedomain.messaging/0.8.17",
       "files": [
         "lib/net452/ReactiveDomain.Messaging.dll",
         "lib/net462/ReactiveDomain.Messaging.dll",
         "lib/netstandard2.0/ReactiveDomain.Messaging.dll",
-        "reactivedomain.messaging.0.8.15.nupkg.sha512",
+        "reactivedomain.messaging.0.8.17.nupkg.sha512",
         "reactivedomain.messaging.nuspec"
       ]
     },
-    "ReactiveDomain.Persistence/0.8.15": {
-      "sha512": "HmaRZiPG+hUCfC1oZ1r05ndx7P9rCkHc9efpuLJ3gKqm4lv+ewIS85PunBOGC2mLS3D+eDhnnEnpSrwNyP1eNQ==",
+    "ReactiveDomain.Persistence/0.8.17": {
+      "sha512": "cS2Ghhmhxu4/mf+AEFbWag91FmRx+rkJfvUYx7Bzo5sCTULAJrxNllUhEwdJJV9T3VlaoFVmj1fxtQedpA0l2A==",
       "type": "package",
-      "path": "reactivedomain.persistence/0.8.15",
+      "path": "reactivedomain.persistence/0.8.17",
       "files": [
         "lib/net452/ReactiveDomain.Persistence.dll",
         "lib/net462/ReactiveDomain.Persistence.dll",
         "lib/netstandard2.0/ReactiveDomain.Persistence.dll",
-        "reactivedomain.persistence.0.8.15.nupkg.sha512",
+        "reactivedomain.persistence.0.8.17.nupkg.sha512",
         "reactivedomain.persistence.nuspec"
       ]
     },
@@ -712,66 +666,12 @@
         "splat.1.4.0.nupkg.sha512",
         "splat.nuspec"
       ]
-    },
-    "xunit.abstractions/2.0.1": {
-      "sha512": "bDm/zdG5rnRDsobKuKwrvL4HccBdC0uvT12be6fG12P3d1U7u9Wkvfoq/PM2GeyIeb0Dtcmm/7k2oaawiqQ2Dg==",
-      "type": "package",
-      "path": "xunit.abstractions/2.0.1",
-      "files": [
-        "lib/net35/xunit.abstractions.dll",
-        "lib/net35/xunit.abstractions.xml",
-        "lib/netstandard1.0/xunit.abstractions.dll",
-        "lib/netstandard1.0/xunit.abstractions.xml",
-        "xunit.abstractions.2.0.1.nupkg.sha512",
-        "xunit.abstractions.nuspec"
-      ]
-    },
-    "xunit.core/2.3.1": {
-      "sha512": "LOG4qOFuVQcjYcIuZbKeo03Uvng3lSb2gZJU9ANljwCf+PTd//iAMZS5qcJQZrjhndc4aOUlJGQy5wa0+/iZ6w==",
-      "type": "package",
-      "path": "xunit.core/2.3.1",
-      "files": [
-        "build/xunit.core.props",
-        "build/xunit.core.targets",
-        "build/xunit.execution.desktop.dll",
-        "buildMultiTargeting/xunit.core.props",
-        "buildMultiTargeting/xunit.core.targets",
-        "xunit.core.2.3.1.nupkg.sha512",
-        "xunit.core.nuspec"
-      ]
-    },
-    "xunit.extensibility.core/2.3.1": {
-      "sha512": "1mgYqXeQfU+7zcSRW8/5Uf1jVZ5+5WELmi+BuRTh0xu/x0Q0gK0SuR3FLUF4BSd8sfZzvrRUrhWj3ltpyFxhrg==",
-      "type": "package",
-      "path": "xunit.extensibility.core/2.3.1",
-      "files": [
-        "lib/netstandard1.1/xunit.core.dll",
-        "lib/netstandard1.1/xunit.core.dll.tdnet",
-        "lib/netstandard1.1/xunit.core.xml",
-        "lib/netstandard1.1/xunit.runner.tdnet.dll",
-        "lib/netstandard1.1/xunit.runner.utility.net452.dll",
-        "xunit.extensibility.core.2.3.1.nupkg.sha512",
-        "xunit.extensibility.core.nuspec"
-      ]
-    },
-    "xunit.extensibility.execution/2.3.1": {
-      "sha512": "i8xrHfKC5dyBWQ7I15FePzm0m8KNToBsTleCCQbOQuXRPZIvupd4nnfaCPeJuKHHe7yJ8JGtWxjIgw0ow/cMhg==",
-      "type": "package",
-      "path": "xunit.extensibility.execution/2.3.1",
-      "files": [
-        "lib/net452/xunit.execution.desktop.dll",
-        "lib/net452/xunit.execution.desktop.xml",
-        "lib/netstandard1.1/xunit.execution.dotnet.dll",
-        "lib/netstandard1.1/xunit.execution.dotnet.xml",
-        "xunit.extensibility.execution.2.3.1.nupkg.sha512",
-        "xunit.extensibility.execution.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.6.2": [
       "NodaTime >= 2.3.0-beta02",
-      "ReactiveDomain.Foundation >= 0.8.15"
+      "ReactiveDomain.Foundation >= 0.8.17"
     ]
   },
   "packageFolders": {
@@ -826,7 +726,7 @@
           },
           "ReactiveDomain.Foundation": {
             "target": "Package",
-            "version": "[0.8.15, )"
+            "version": "[0.8.17, )"
           }
         }
       }

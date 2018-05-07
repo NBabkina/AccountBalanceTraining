@@ -5,7 +5,6 @@ C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBa
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\obj\Debug\net462\AccountBalanceTest.AssemblyInfo.cs
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\AccountBalanceTest.pdb
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\xunit.abstractions.dll
-C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\xunit.assert.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\xunit.core.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\xunit.execution.desktop.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\obj\Debug\net462\AccountBalanceTest.csproj.CopyComplete
@@ -14,7 +13,6 @@ C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBa
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\xunit.runner.visualstudio.testadapter.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\xunit.runner.reporters.net452.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\xunit.runner.utility.net452.dll
-C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\AccountBalanceTest.dll.config
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\Microsoft.Extensions.Configuration.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
@@ -125,7 +123,6 @@ C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBa
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\System.Xml.XmlSerializer.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\System.Xml.XPath.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\System.Xml.XPath.XDocument.dll
-C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\obj\Debug\net462\AccountBalanceTest.dll.config
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\EventStore.ClientAPI.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\EventStore.ClientAPI.Embedded.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\ReactiveDomain.Core.dll
@@ -143,3 +140,8 @@ C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBa
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\AccountBalanceDomain.pdb
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\dotMemory.Unit.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\NodaTime.dll
+C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\NodaTime.Serialization.JsonNet.dll
+C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\AccountBalanceTest.dll.config
+C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\xunit.assert.dll
+C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\obj\Debug\net462\AccountBalanceTest.dll.config
+C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceTest\bin\Debug\net462\AppSettings.json

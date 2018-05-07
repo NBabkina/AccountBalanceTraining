@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using AccountBalanceDomain;
 using ReactiveDomain;
 using ReactiveDomain.Foundation;
-using ReactiveDomain.Foundation.EventStore;
 using ReactiveDomain.Messaging;
 using ReactiveDomain.Messaging.Bus;
 using Xunit.ScenarioReporting;
@@ -155,7 +154,7 @@ namespace AccountBalanceTest
             // If running in debugger...
             try
             {
-                _bus.Fire(when);
+                _bus.Send(when);
             }
             catch (CommandException ex)
             {

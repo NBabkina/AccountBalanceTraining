@@ -1,0 +1,3488 @@
+﻿<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--<link rel="stylesheet" type="text/css" href="ScenarioReportingTests.css">-->
+
+	<style>
+        @import url('https://fonts.googleapis.com/css?family=Raleway');
+
+        .color-primary-0 {
+            color: #F0F5EC
+        }
+        /* Main Primary color */
+        .color-primary-1 {
+            color: #CEE8B2
+        }
+
+        .color-primary-2 {
+            color: #DDEECB
+        }
+
+        .color-primary-3 {
+            color: #DFE7D6
+        }
+
+        .color-primary-4 {
+            color: #C8D2BE
+        }
+
+        .color-secondary-1-0 {
+            color: #FFFBF6
+        }
+        /* Main Secondary color (1) */
+        .color-secondary-1-1 {
+            color: #FFE6C4
+        }
+
+        .color-secondary-1-2 {
+            color: #FFEFD9
+        }
+
+        .color-secondary-1-3 {
+            color: #FFF7EC
+        }
+
+        .color-secondary-1-4 {
+            color: #E9E0D3
+        }
+
+        .color-secondary-2-0 {
+            color: #DAD7DE
+        }
+        /* Main Secondary color (2) */
+        .color-secondary-2-1 {
+            color: #9D91B7
+        }
+
+        .color-secondary-2-2 {
+            color: #B7AECA
+        }
+
+        .color-secondary-2-3 {
+            color: #AAA6B2
+        }
+
+        .color-secondary-2-4 {
+            color: #96929F
+        }
+
+        .color-complement-0 {
+            color: #F2EAED
+        }
+        /* Main Complement color */
+        .color-complement-1 {
+            color: #E3AEC1
+        }
+
+        .color-complement-2 {
+            color: #EAC7D3
+        }
+
+        .color-complement-3 {
+            color: #E1D0D6
+        }
+
+        .color-complement-4 {
+            color: #CCB9BF
+        }
+
+
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            font-size: 16px;
+            background-color: #96929F;
+        }
+
+        .report-assembly {
+            padding: 1em;
+        }
+
+        .report-header,
+        .report-header a {
+            color: antiquewhite;
+        }
+
+        .report-header {
+            font-size: 1.2rem;
+        }
+
+
+        .section-scenario {
+            margin: 2em auto;
+            padding: 1em;
+            background-color: #F0F5EC;
+            break-before: page;
+        }
+
+        .section-scenario li {
+            padding: .2em .1em;
+        }
+
+
+        .section-givens {
+            margin: 1em 3em 1em 1em;
+            padding: 1em;
+            background-color: #C8D2BE;
+        }
+
+        .section-whens {
+            margin: 1em 2em 1em 2em;
+            padding: 1em;
+            background-color: #DFE7D6;
+        }
+
+        .section-thens {
+            margin: 1em 1em 1em 3em;
+            padding: 1em;
+            background-color: #DDEECB;
+        }
+
+        .section-scenario,
+        .section-givens,
+        .section-whens,
+        .section-thens {
+            border-radius: 5px;
+            box-shadow: 0 10px 15px -10px #777;
+            overflow-wrap: break-word;
+        }
+
+        .section-scenario {
+            box-shadow: 0 20px 15px -15px #555;
+        }
+
+        .section-given:not(:last-child),
+        .section-when:not(:last-child),
+        .section-then:not(:last-child) {
+            border-bottom: 2px solid #F0F5EC;
+        }
+
+        .assembly-name,
+        .assembly-timestamp {
+            font-weight: bold;
+        }
+
+
+        .menu .menu-item .status-failure {
+            color: crimson;
+        }
+
+        .menu-item {
+            overflow-wrap: break-word;
+        }
+
+        .section-scenario.status-failure {
+            border-left: 0.4em solid crimson;
+        }
+
+        .section-then .status-failure {
+            border-left: 0.2em solid crimson;
+            padding-left: 0.5em;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            stroke-width: 0;
+            stroke: currentColor;
+            fill: currentColor;
+        }
+
+        .icon-lemon-2 {
+            font-size: 1.6rem;
+        }
+
+        .icon-error-x {
+            font-size: 3.2em;
+        }
+
+
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes jello {
+            from, 11.1%, to {
+                transform: none;
+            }
+
+            22.2% {
+                transform: skewX(-12.5deg) skewY(-12.5deg);
+            }
+
+            33.3% {
+                transform: skewX(6.25deg) skewY(6.25deg);
+            }
+
+            44.4% {
+                transform: skewX(-3.125deg) skewY(-3.125deg);
+            }
+
+            55.5% {
+                transform: skewX(1.5625deg) skewY(1.5625deg);
+            }
+
+            66.6% {
+                transform: skewX(-0.78125deg) skewY(-0.78125deg);
+            }
+
+            77.7% {
+                transform: skewX(0.390625deg) skewY(0.390625deg);
+            }
+
+            88.8% {
+                transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+            }
+        }
+
+        @keyframes jello2 {
+            from, 11.1%, to {
+                transform: none;
+            }
+
+            22.2% {
+                transform: skewX(-12.5deg) skewY(-12.5deg);
+            }
+
+            33.3% {
+                transform: skewX(6.25deg) skewY(6.25deg);
+            }
+
+            44.4% {
+                transform: skewX(-3.125deg) skewY(-3.125deg);
+            }
+
+            55.5% {
+                transform: skewX(1.5625deg) skewY(1.5625deg);
+            }
+
+            66.6% {
+                transform: skewX(-0.78125deg) skewY(-0.78125deg);
+            }
+
+            77.7% {
+                transform: skewX(0.390625deg) skewY(0.390625deg);
+            }
+
+            88.8% {
+                transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+            }
+        }
+
+        .jello {
+            animation-name: jello;
+            transform-origin: center;
+        }
+        .jello:hover {
+            animation-name: jello2;
+            transform-origin: center;
+        }
+
+        /* Accordion styles */
+        .accordion .tab {
+            position: relative;
+            margin-bottom: 1px;
+            width: 100%;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .accordion input {
+            position: absolute;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .accordion label {
+            position: relative;
+            display: block;
+            padding: 0 0 0 1em;
+            background: #16a085;
+            font-weight: bold;
+            /*line-height: 3;*/
+            cursor: pointer;
+        }
+
+        .accordion .tab-content {
+            max-height: 0;
+            overflow: hidden;
+            background: #1abc9c;
+            -webkit-transition: max-height .35s;
+            -o-transition: max-height .35s;
+            transition: max-height .35s;
+        }
+        /* :checked */
+        .accordion input:checked ~ .tab-content {
+            max-height: 10em;
+        }
+        /* Icon */
+        .accordion label::after {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: block;
+            width: 3em;
+            height: 3em;
+            /*line-height: 3;*/
+            text-align: center;
+            -webkit-transition: all .35s;
+            -o-transition: all .35s;
+            transition: all .35s;
+        }
+
+        .accordion input[type=checkbox] + label::after {
+            content: "+";
+        }
+
+        .accordion input[type=checkbox]:checked + label::after {
+            transform: rotate(315deg);
+        }
+
+        /*Accordion customisations*/
+        .accordion .tab {
+            /*color: inherit;*/
+        }
+
+        .accordion .tab-content p {
+            padding-left: 1em;
+        }
+
+        .accordion input:checked ~ .tab-content {
+            max-height: initial;
+        }
+
+        .accordion label::after {
+            width: 1.5em;
+            height: 1.5em;
+            line-height: 1.5;
+            font-size: 2em;
+        }
+
+        .accordion label {
+            /*line-height: 3; 4;*/
+            padding: 1em 2em 1em 1em;
+        }
+
+        .accordion.red label {
+            background-color: rgba(237, 20, 61, 0.58); /*crimson;*/
+        }
+
+        .accordion.red .tab-content {
+            background-color: rgba(237, 20, 61, 0.48); /*#EC2F55;*/
+        }
+
+        .accordion.tech label {
+            border-left: 1px solid gainsboro;
+            border-top: 1px solid gainsboro;
+            border-right: 1px solid gainsboro;
+            background-color: inherit;
+            color: dimgrey;
+        }
+
+        .accordion.tech .tab-content {
+            border-left: 1px solid gainsboro;
+            border-bottom: 1px solid gainsboro;
+            border-right: 1px solid gainsboro;
+            background-color: rgb(246, 251, 243);
+        }
+
+        .accordion.tech .tab {
+            color: inherit;
+        }
+
+        .accordion.error label {
+            border-left: 1px solid #c1ccb2;
+            border-top: 1px solid #c1ccb2;
+            border-right: 1px solid #c1ccb2;
+            background-color: inherit;
+            color: crimson;
+        }
+
+        .accordion.error .tab-content {
+            border-left: 1px solid #c1ccb2;
+            border-bottom: 1px solid #c1ccb2;
+            border-right: 1px solid #c1ccb2;
+            background-color: rgb(246, 251, 243);
+        }
+
+        .accordion.error .tab {
+            color: inherit;
+        }
+
+        .accordion.error .fail-message {
+            font-weight: normal;
+        }
+
+	</style>
+
+  </head>
+  <body>  
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+        <defs>
+            <symbol id="icon-lemon-2" viewBox="0 0 512 512">
+                <path style="fill:#F4DE3B;" d="M452.541,261.129c0-100.923-63.981-185.539-150.123-208.285c0.254-1.975,0.399-3.985,0.399-6.029
+	                C302.816,20.961,281.856,0,256.001,0s-46.816,20.961-46.816,46.817c0,2.044,0.145,4.054,0.399,6.029
+	                C123.441,75.592,59.459,160.206,59.459,261.129c0,100.844,63.881,185.405,149.921,208.231c2.116,23.896,22.175,42.635,46.621,42.635
+	                s44.505-18.739,46.621-42.635C388.66,446.534,452.541,361.973,452.541,261.129z" />
+                <path style="fill:#D6BD27;" d="M256.004,512c-24.446,0-44.503-18.748-46.621-42.643C123.341,446.528,59.46,361.974,59.46,261.136
+	                c0-100.928,63.983-185.546,150.129-208.286c-0.257-1.976-0.411-3.991-0.411-6.031c0-25.858,20.968-46.813,46.826-46.813
+	                c-8.957,0-16.22,20.956-16.22,46.813c0,2.04,0.051,4.055,0.141,6.031c-29.823,22.739-51.985,107.357-51.985,208.286
+	                c0,100.839,22.123,185.392,51.921,208.222C240.593,493.252,247.535,512,256.004,512z" />
+            </symbol>
+        </defs>
+    </svg>
+
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" viewBox="0 0 612 792" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <style type="text/css">
+            .st0 {
+                clip-path: url(#SVGID_2_);
+                fill: none;
+                stroke: crimson;
+                stroke-width: 45;
+            }
+
+            .st1 {
+                fill: crimson; /*#E44061;*/
+            }
+        </style>
+        <symbol id="icon-error-x" viewBox="0 0 612 792">
+        <g>
+        <g>
+        <defs>
+            <rect height="512" id="SVGID_1_" width="512" x="50" y="140" />
+        </defs>
+        <clipPath id="SVGID_2_">
+        <use style="overflow:visible;" xlink:href="#SVGID_1_" />
+        </clipPath>
+        <path class="st0" d="M306,629.5c128.8,0,233.5-104.7,233.5-233.5S434.8,162.5,306,162.5S72.5,267.2,72.5,396    S177.2,629.5,306,629.5L306,629.5z" />
+        </g>
+        <polygon class="st1" points="348.7,396 448,296.7 405.3,254 306,353.3 206.7,254 164,296.7 263.3,396 164,495.3 206.7,538    306,438.7 405.3,538 448,495.3 348.7,396  " />
+        </g>
+        </symbol>
+    </svg>
+<html xmlns:xlink="http://www.w3.org/1999/xlink">
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+                    @import url('https://fonts.googleapis.com/css?family=Raleway');
+
+                    .color-primary-0 {
+                    color: #F0F5EC
+                    }
+                    /* Main Primary color */
+                    .color-primary-1 {
+                    color: #CEE8B2
+                    }
+
+                    .color-primary-2 {
+                    color: #DDEECB
+                    }
+
+                    .color-primary-3 {
+                    color: #DFE7D6
+                    }
+
+                    .color-primary-4 {
+                    color: #C8D2BE
+                    }
+
+                    .color-secondary-1-0 {
+                    color: #FFFBF6
+                    }
+                    /* Main Secondary color (1) */
+                    .color-secondary-1-1 {
+                    color: #FFE6C4
+                    }
+
+                    .color-secondary-1-2 {
+                    color: #FFEFD9
+                    }
+
+                    .color-secondary-1-3 {
+                    color: #FFF7EC
+                    }
+
+                    .color-secondary-1-4 {
+                    color: #E9E0D3
+                    }
+
+                    .color-secondary-2-0 {
+                    color: #DAD7DE
+                    }
+                    /* Main Secondary color (2) */
+                    .color-secondary-2-1 {
+                    color: #9D91B7
+                    }
+
+                    .color-secondary-2-2 {
+                    color: #B7AECA
+                    }
+
+                    .color-secondary-2-3 {
+                    color: #AAA6B2
+                    }
+
+                    .color-secondary-2-4 {
+                    color: #96929F
+                    }
+
+                    .color-complement-0 {
+                    color: #F2EAED
+                    }
+                    /* Main Complement color */
+                    .color-complement-1 {
+                    color: #E3AEC1
+                    }
+
+                    .color-complement-2 {
+                    color: #EAC7D3
+                    }
+
+                    .color-complement-3 {
+                    color: #E1D0D6
+                    }
+
+                    .color-complement-4 {
+                    color: #CCB9BF
+                    }
+
+
+
+                    body {
+                    font-family: 'Raleway', sans-serif;
+                    font-size: 16px;
+                    background-color: #96929F;
+                    }
+
+                    code {
+                    background: #F0F5EC;
+                    padding: 0 5px 2px;
+                    border-radius: 4px;
+                    position: relative;
+                    top: -1px;
+                    margin: 0 3px 0 1px;
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
+                    }
+
+                    .report-assembly {
+                    padding: 1em;
+                    }
+
+                    .report-header,
+                    .report-header a {
+                    color: antiquewhite;
+                    }
+
+                    .report-header {
+                    font-size: 1.2rem;
+                    }
+
+
+                    .section-scenario {
+                    margin: 2em auto;
+                    padding: 1em;
+                    background-color: #F0F5EC;
+                    break-before: page;
+                    }
+
+                    .section-scenario li {
+                    padding: .2em .1em;
+                    }
+
+
+                    .section-givens {
+                    margin: 1em 3em 1em 1em;
+                    padding: 1em;
+                    background-color: #C8D2BE;
+                    }
+
+                    .section-whens {
+                    margin: 1em 2em 1em 2em;
+                    padding: 1em;
+                    background-color: #DFE7D6;
+                    }
+
+                    .section-thens {
+                    margin: 1em 1em 1em 3em;
+                    padding: 1em;
+                    background-color: #DDEECB;
+                    }
+
+                    .section-scenario,
+                    .section-givens,
+                    .section-whens,
+                    .section-thens {
+                    border-radius: 5px;
+                    box-shadow: 0 10px 15px -10px #777;
+                    overflow-wrap: break-word;
+                    }
+
+                    .section-scenario {
+                    box-shadow: 0 20px 15px -15px #555;
+                    }
+
+                    .section-given:not(:last-child),
+                    .section-when:not(:last-child),
+                    .section-then:not(:last-child) {
+                    border-bottom: 2px solid #F0F5EC;
+                    }
+
+                    .nested-child {
+                    position-relative;
+                    padding-left:4em;
+                    }
+
+                    .assembly-name,
+                    .assembly-timestamp {
+                    font-weight: bold;
+                    }
+
+
+                    .menu .menu-item .status-failure {
+                    color: crimson;
+                    }
+
+                    .menu-item {
+                    overflow-wrap: break-word;
+                    }
+
+                    .section-scenario.status-failure {
+                    border-left: 0.4em solid crimson;
+                    }
+
+                    .section-then .status-failure {
+                    border-left: 0.2em solid crimson;
+                    padding-left: 0.5em;
+                    }
+
+                    .icon {
+                    display: inline-block;
+                    width: 1em;
+                    height: 1em;
+                    stroke-width: 0;
+                    stroke: currentColor;
+                    fill: currentColor;
+                    }
+
+                    .icon-lemon-2 {
+                    font-size: 1.6rem;
+                    }
+
+                    .icon-error-x {
+                    font-size: 3.2em;
+                    }
+
+
+                    .animated {
+                    animation-duration: 1s;
+                    animation-fill-mode: both;
+                    }
+
+                    @keyframes jello {
+                    from, 11.1%, to {
+                    transform: none;
+                    }
+
+                    22.2% {
+                    transform: skewX(-12.5deg) skewY(-12.5deg);
+                    }
+
+                    33.3% {
+                    transform: skewX(6.25deg) skewY(6.25deg);
+                    }
+
+                    44.4% {
+                    transform: skewX(-3.125deg) skewY(-3.125deg);
+                    }
+
+                    55.5% {
+                    transform: skewX(1.5625deg) skewY(1.5625deg);
+                    }
+
+                    66.6% {
+                    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+                    }
+
+                    77.7% {
+                    transform: skewX(0.390625deg) skewY(0.390625deg);
+                    }
+
+                    88.8% {
+                    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+                    }
+                    }
+
+                    @keyframes jello2 {
+                    from, 11.1%, to {
+                    transform: none;
+                    }
+
+                    22.2% {
+                    transform: skewX(-12.5deg) skewY(-12.5deg);
+                    }
+
+                    33.3% {
+                    transform: skewX(6.25deg) skewY(6.25deg);
+                    }
+
+                    44.4% {
+                    transform: skewX(-3.125deg) skewY(-3.125deg);
+                    }
+
+                    55.5% {
+                    transform: skewX(1.5625deg) skewY(1.5625deg);
+                    }
+
+                    66.6% {
+                    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+                    }
+
+                    77.7% {
+                    transform: skewX(0.390625deg) skewY(0.390625deg);
+                    }
+
+                    88.8% {
+                    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+                    }
+                    }
+
+                    .jello {
+                    animation-name: jello;
+                    transform-origin: center;
+                    }
+                    .jello:hover {
+                    animation-name: jello2;
+                    transform-origin: center;
+                    }
+
+                    /* Accordion styles */
+                    .accordion .tab {
+                    position: relative;
+                    margin-bottom: 1px;
+                    width: 100%;
+                    color: #fff;
+                    overflow: hidden;
+                    }
+
+                    .accordion input {
+                    position: absolute;
+                    opacity: 0;
+                    z-index: -1;
+                    }
+
+                    .accordion label {
+                    position: relative;
+                    display: block;
+                    padding: 0 0 0 1em;
+                    background: #16a085;
+                    font-weight: bold;
+                    /*line-height: 3;*/
+                    cursor: pointer;
+                    }
+
+                    .accordion .tab-content {
+                    max-height: 0;
+                    overflow: hidden;
+                    background: #1abc9c;
+                    -webkit-transition: max-height .35s;
+                    -o-transition: max-height .35s;
+                    transition: max-height .35s;
+                    }
+                    /* :checked */
+                    .accordion input:checked ~ .tab-content {
+                    max-height: 10em;
+                    }
+                    /* Icon */
+                    .accordion label::after {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    display: block;
+                    width: 3em;
+                    height: 3em;
+                    /*line-height: 3;*/
+                    text-align: center;
+                    -webkit-transition: all .35s;
+                    -o-transition: all .35s;
+                    transition: all .35s;
+                    }
+
+                    .accordion input[type=checkbox] + label::after {
+                    content: "+";
+                    }
+
+                    .accordion input[type=checkbox]:checked + label::after {
+                    transform: rotate(315deg);
+                    }
+
+                    /*Accordion customisations*/
+                    .accordion .tab {
+                    /*color: inherit;*/
+                    }
+
+                    .accordion .tab-content p {
+                    padding-left: 1em;
+                    }
+
+                    .accordion input:checked ~ .tab-content {
+                    max-height: initial;
+                    }
+
+                    .accordion label::after {
+                    width: 1.5em;
+                    height: 1.5em;
+                    line-height: 1.5;
+                    font-size: 2em;
+                    }
+
+                    .accordion label {
+                    /*line-height: 3; 4;*/
+                    padding: 1em 2em 1em 1em;
+                    }
+
+                    .accordion.red label {
+                    background-color: rgba(237, 20, 61, 0.58); /*crimson;*/
+                    }
+
+                    .accordion.red .tab-content {
+                    background-color: rgba(237, 20, 61, 0.48); /*#EC2F55;*/
+                    }
+
+                    .accordion.tech label {
+                    border-left: 1px solid gainsboro;
+                    border-top: 1px solid gainsboro;
+                    border-right: 1px solid gainsboro;
+                    background-color: inherit;
+                    color: dimgrey;
+                    }
+
+                    .accordion.tech .tab-content {
+                    border-left: 1px solid gainsboro;
+                    border-bottom: 1px solid gainsboro;
+                    border-right: 1px solid gainsboro;
+                    background-color: rgb(246, 251, 243);
+                    }
+
+                    .accordion.tech .tab {
+                    color: inherit;
+                    }
+
+                    .accordion.error label {
+                    border-left: 1px solid #c1ccb2;
+                    border-top: 1px solid #c1ccb2;
+                    border-right: 1px solid #c1ccb2;
+                    background-color: inherit;
+                    color: crimson;
+                    }
+
+                    .accordion.error .tab-content {
+                    border-left: 1px solid #c1ccb2;
+                    border-bottom: 1px solid #c1ccb2;
+                    border-right: 1px solid #c1ccb2;
+                    background-color: rgb(246, 251, 243);
+                    }
+
+                    .accordion.error .tab {
+                    color: inherit;
+                    }
+
+                    .accordion.error .fail-message {
+                    font-weight: normal;
+                    }
+
+
+                    /*#084978;*/
+                    .arrow {
+                    margin: 1em;
+                    position: relative;
+                    width: 0;
+                    height: 0;
+                    border-top: 1em solid transparent;
+                    border-right: 1em solid cadetblue;
+                    -webkit-transform: rotate(320deg); /*220deg*/
+                    -moz-transform: rotate(320deg);
+                    -ms-transform: rotate(320deg);
+                    -o-transform: rotate(320deg);
+                    transform: rotate(320deg);
+                    }
+                    .arrow:after {
+                    content: "";
+                    position: absolute;
+                    border: 0 solid transparent;
+                    border-top: 0.5em solid cadetblue;
+                    border-radius: 0 2.5em 0 0;
+                    top: -2.5em;
+                    left: -0.2em;
+                    width: 1.5em;
+                    height: 1.5em;
+                    -webkit-transform: rotate(225deg); /*45deg*/
+                    -moz-transform: rotate(225deg);
+                    -ms-transform: rotate(225deg);
+                    -o-transform: rotate(225deg);
+                    transform: rotate(225deg);
+                    }
+
+                    /*Customisations to show arrow in first child*/
+                    .arrow {
+                    float:left;
+                    margin-left:1.8em;
+                    margin-top:0.6em;
+                    }
+                    /*First nested child customisations. Note: first-of-type does not work on class so instead adjust all children and then correct all but the first one.*/
+                    .nested-child {
+                    margin-top: 1.4em;
+                    }
+                    .nested-child ~ .nested-child {
+                    margin-top: initial;
+                    }
+
+
+                </style>
+  </head>
+  <body>
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <symbol id="icon-lemon-2" viewBox="0 0 512 512">
+                <path style="fill:#F4DE3B;" d="M452.541,261.129c0-100.923-63.981-185.539-150.123-208.285c0.254-1.975,0.399-3.985,0.399-6.029                  C302.816,20.961,281.856,0,256.001,0s-46.816,20.961-46.816,46.817c0,2.044,0.145,4.054,0.399,6.029                  C123.441,75.592,59.459,160.206,59.459,261.129c0,100.844,63.881,185.405,149.921,208.231c2.116,23.896,22.175,42.635,46.621,42.635                  s44.505-18.739,46.621-42.635C388.66,446.534,452.541,361.973,452.541,261.129z" />
+                <path style="fill:#D6BD27;" d="M256.004,512c-24.446,0-44.503-18.748-46.621-42.643C123.341,446.528,59.46,361.974,59.46,261.136                  c0-100.928,63.983-185.546,150.129-208.286c-0.257-1.976-0.411-3.991-0.411-6.031c0-25.858,20.968-46.813,46.826-46.813                  c-8.957,0-16.22,20.956-16.22,46.813c0,2.04,0.051,4.055,0.141,6.031c-29.823,22.739-51.985,107.357-51.985,208.286                  c0,100.839,22.123,185.392,51.921,208.222C240.593,493.252,247.535,512,256.004,512z" />
+            </symbol>
+        </defs>
+    </svg>
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" viewBox="0 0 612 792" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+        <style type="text/css">
+            .st0 {
+                clip-path: url(#SVGID_2_);
+                fill: none;
+                stroke: crimson;
+                stroke-width: 45;
+            }
+
+            .st1 {
+                fill: crimson; /*#E44061;*/
+            }
+        </style>
+        <symbol id="icon-error-x" viewBox="0 0 612 792">
+        <g>
+        <g>
+        <defs>
+            <rect height="512" id="SVGID_1_" width="512" x="50" y="140" />
+        </defs>
+        <clipPath id="SVGID_2_">
+        <use style="overflow:visible;" xlink:href="#SVGID_1_" />
+        </clipPath>
+        <path class="st0" d="M306,629.5c128.8,0,233.5-104.7,233.5-233.5S434.8,162.5,306,162.5S72.5,267.2,72.5,396    S177.2,629.5,306,629.5L306,629.5z" />
+        </g>
+        <polygon class="st1" points="348.7,396 448,296.7 405.3,254 306,353.3 206.7,254 164,296.7 263.3,396 164,495.3 206.7,538    306,438.7 405.3,538 448,495.3 348.7,396  " />
+        </g>
+        </symbol>
+    </svg>
+    <div class="report-assembly">
+      <div class="report-header">
+        <h2><a name="top">Here's what happened</a></h2>
+        <p>Looking at Assembly <span class="assembly-name">AccountBalanceTest</span> of <span class="assembly-timestamp">07/05/2018 11:25:23 +03:00</span> with the following Scenarios.</p>
+        <p>37 Scenario(s):</p>
+        <ul class="menu">
+          <li class="menu-item"><a href="#ID0EG">AccountBalanceTest.CreateAccontTests.CannotCreateAccountIfExists</a></li>
+          <li class="menu-item"><a href="#ID0EYC">AccountBalanceTest.CreateAccontTests.CannotCreateAcountWithEmptyHolder</a></li>
+          <li class="menu-item"><a href="#ID0EQE">AccountBalanceTest.CreateAccontTests.CanCreateAccount</a></li>
+          <li class="menu-item"><a href="#ID0E1G">AccountBalanceTest.DepositCashTests.CannnotDepositCash_AccountDoesntExist</a></li>
+          <li class="menu-item"><a href="#ID0ETAAC">AccountBalanceTest.DepositCashTests.CanDepositCashAndUnblock</a></li>
+          <li class="menu-item"><a href="#ID0EEFAC">AccountBalanceTest.DepositCashTests.CannotDepositCash_IllegalAmount(am: 0)</a></li>
+          <li class="menu-item"><a href="#ID0EWHAC">AccountBalanceTest.DepositCashTests.CannotDepositCash_IllegalAmount(am: -100)</a></li>
+          <li class="menu-item"><a href="#ID0EIKAC">AccountBalanceTest.DepositCashTests.CanDepositCash</a></li>
+          <li class="menu-item"><a href="#ID0EMNAC">AccountBalanceTest.DepositChequesTests.CanDepositCheque</a></li>
+          <li class="menu-item"><a href="#ID0ERAAE">AccountBalanceTest.DepositChequesTests.CannnotDepositCheque_AccountDoesntExist</a></li>
+          <li class="menu-item"><a href="#ID0EJCAE">AccountBalanceTest.DepositChequesTests.CannotDepositCheque_IllegalAmount(am: -100)</a></li>
+          <li class="menu-item"><a href="#ID0E2EAE">AccountBalanceTest.DepositChequesTests.CannotDepositCheque_IllegalAmount(am: 0)</a></li>
+          <li class="menu-item"><a href="#ID0ENHAE">AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 1000)</a></li>
+          <li class="menu-item"><a href="#ID0ERKAE">AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 0)</a></li>
+          <li class="menu-item"><a href="#ID0EVNAE">AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 1000000)</a></li>
+          <li class="menu-item"><a href="#ID0EZQAE">AccountBalanceTest.SetOverdraftLimitTests.CannnotSetOverdraftLimit_NegativeValue</a></li>
+          <li class="menu-item"><a href="#ID0ELTAE">AccountBalanceTest.SetOverdraftLimitTests.CannnotSetOverdraftLimit_AccountDoesntExist</a></li>
+          <li class="menu-item"><a href="#ID0EDVAE">AccountBalanceTest.SetTransferLimitTests.CannnotSetTransferLimit_AccountDoesntExist</a></li>
+          <li class="menu-item"><a href="#ID0E2WAE">AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 0)</a></li>
+          <li class="menu-item"><a href="#ID0E6ZAE">AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 1000)</a></li>
+          <li class="menu-item"><a href="#ID0ED4AE">AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 1000000)</a></li>
+          <li class="menu-item"><a href="#ID0EIAAG">AccountBalanceTest.SetTransferLimitTests.CannnotSetTransferLimit_NegativeValue</a></li>
+          <li class="menu-item"><a href="#ID0E1CAG">AccountBalanceTest.SetupAccountDailyTests.CannotSetupAccountDaily_AccountDoesntExist</a></li>
+          <li class="menu-item"><a href="#ID0EOEAG">AccountBalanceTest.SetupAccountDailyTests.CanSetupAccountDaily</a></li>
+          <li class="menu-item"><a href="#ID0ECJAG">AccountBalanceTest.SetupAccountDailyTests.CanSetupAccountDaily_NoPendingAmount</a></li>
+          <li class="menu-item"><a href="#ID0EHLAG">AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_DailyLimitIsExceeded</a></li>
+          <li class="menu-item"><a href="#ID0EBPAG">AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_IllegalAmount(am: -100)</a></li>
+          <li class="menu-item"><a href="#ID0ENSAG">AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_IllegalAmount(am: 0)</a></li>
+          <li class="menu-item"><a href="#ID0EZVAG">AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_LimitIsNotSet</a></li>
+          <li class="menu-item"><a href="#ID0ELYAG">AccountBalanceTest.WireTranferTests.CanWithddrawWireTransfer</a></li>
+          <li class="menu-item"><a href="#ID0EJ3AG">AccountBalanceTest.WireTranferTests.CannnotWireTransfer_AccountDoesntExist</a></li>
+          <li class="menu-item"><a href="#ID0EB5AG">AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_IllegalAmount(am: -100)</a></li>
+          <li class="menu-item"><a href="#ID0ETABG">AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_IllegalAmount(am: 0)</a></li>
+          <li class="menu-item"><a href="#ID0EFDBG">AccountBalanceTest.WithdrawCashTests.CanWithdrawCash(am: 1000)</a></li>
+          <li class="menu-item"><a href="#ID0EDHBG">AccountBalanceTest.WithdrawCashTests.CanWithdrawCash(am: 10)</a></li>
+          <li class="menu-item"><a href="#ID0EBLBG">AccountBalanceTest.WithdrawCashTests.CannnotWithdrawCash_AccountDoesntExist</a></li>
+          <li class="menu-item"><a href="#ID0EZMBG">AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_EverdraftLimitexceeded</a></li>
+        </ul>
+      </div>
+      <div class="report-body"><a name="ID0EQE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.CreateAccontTests.CanCreateAccount</p>
+          <p>Nom de guerre: Account balance test. Create accont tests. Can create account</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <p>[There are no Givens]</p>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>CreateAccountCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 388ca01e-a87f-42d2-b846-d2c1cc240c13</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> f065d524-3b83-451b-886f-c91a8eac32e8</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> ba8cd6e8-1638-4ada-95f5-d209b1bd2a72</p>
+              <p>with <code>AccountHolderName</code> AccountHolder1</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 388ca01e-a87f-42d2-b846-d2c1cc240c13</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> c55f471b-31a4-416c-b911-4b63e5bc85a9</p>
+              </div>
+              <p>with <code>AccountId</code> ba8cd6e8-1638-4ada-95f5-d209b1bd2a72</p>
+              <p>with <code>AccountHolderName</code> AccountHolder1</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EPE-1" type="checkbox" name="tabs"><label for="tab-tech-ID0EPE-1">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.CreateAccontTests.CanCreateAccount</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.CreateAccontTests.CanCreateAccount</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.CreateAccontTests.CannotCreateAccountIfExists</p>
+          <p>Nom de guerre: Account balance test. Create accont tests. Cannot create account if exists</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 51c1818c-c203-492e-9e6c-b3768fffba7a</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 30e4b40d-a479-4708-b563-132a1796418f</p>
+              </div>
+              <p>with <code>AccountId</code> 2c3b6e88-32b0-4dc4-8f2c-35f1a3963a85</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>CreateAccountCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> a506a8e0-295f-4cad-9603-c77834135282</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 49694f54-d5c9-46de-a385-bdcd00cdbb5d</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 2c3b6e88-32b0-4dc4-8f2c-35f1a3963a85</p>
+              <p>with <code>AccountHolderName</code> BBB</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Account already exists</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EF-2" type="checkbox" name="tabs"><label for="tab-tech-ID0EF-2">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.CreateAccontTests.CannotCreateAccountIfExists</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.CreateAccontTests.CannotCreateAccountIfExists</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EYC"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.CreateAccontTests.CannotCreateAcountWithEmptyHolder</p>
+          <p>Nom de guerre: Account balance test. Create accont tests. Cannot create acount with empty holder</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <p>[There are no Givens]</p>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>CreateAccountCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 4737cf91-508d-4dcd-9a8a-c1e478e013b6</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 6172f5b9-eb75-44ed-b414-883603a75b4c</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> c5207b66-7688-46ff-9608-f9f023c42402</p>
+              <p>with <code>AccountHolderName</code> </p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Account holder name cannot be empty</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EXC-3" type="checkbox" name="tabs"><label for="tab-tech-ID0EXC-3">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.CreateAccontTests.CannotCreateAcountWithEmptyHolder</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.CreateAccontTests.CannotCreateAcountWithEmptyHolder</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EIKAC"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.DepositCashTests.CanDepositCash</p>
+          <p>Nom de guerre: Account balance test. Deposit cash tests. Can deposit cash</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> eb6e1ee5-7686-4fa3-a9a5-f6754d12bf7a</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 0d12603e-957a-429a-9015-88a9df950ce0</p>
+              </div>
+              <p>with <code>AccountId</code> 0fafcd81-5127-4482-b125-715a664f7275</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>DepositCashCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> d2f32a9f-d71b-4fbc-8dc7-390e7305527b</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 64ec5fb5-a475-4214-a211-2f4c224e9201</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 0fafcd81-5127-4482-b125-715a664f7275</p>
+              <p>with <code>Amount</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>AmountDepositedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> d2f32a9f-d71b-4fbc-8dc7-390e7305527b</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 65685986-2987-4c86-a57b-3bfc127f7d83</p>
+              </div>
+              <p>with <code>AccountId</code> 0fafcd81-5127-4482-b125-715a664f7275</p>
+              <p>with <code>Amount</code> 1000</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EHKAC-4" type="checkbox" name="tabs"><label for="tab-tech-ID0EHKAC-4">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositCashTests.CanDepositCash</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositCashTests.CanDepositCash</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0ETAAC"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.DepositCashTests.CanDepositCashAndUnblock</p>
+          <p>Nom de guerre: Account balance test. Deposit cash tests. Can deposit cash and unblock</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> d0e48d95-5f22-4c1a-a6f5-8b851d9de265</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> f643fb9b-90e0-407b-aa05-3cf5b0b0cbd7</p>
+              </div>
+              <p>with <code>AccountId</code> 909a4b3e-f6e8-4c85-adfd-19da3823def0</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+            <div class="section-given">
+              <p>AccountBlockedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 7467884f-37de-45c3-8573-bd753d4b7231</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> a761671d-a72a-4829-b20b-2b31ba8e08a7</p>
+              </div>
+              <p>with <code>AccountId</code> 909a4b3e-f6e8-4c85-adfd-19da3823def0</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>DepositCashCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 5ca7e1a0-b1cd-47cd-8ad2-ef7d587c1663</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 68b937ca-13b7-4723-aa0e-6f76272e6aa4</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 909a4b3e-f6e8-4c85-adfd-19da3823def0</p>
+              <p>with <code>Amount</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>AmountDepositedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 5ca7e1a0-b1cd-47cd-8ad2-ef7d587c1663</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 209b58d0-a10a-4bdb-b716-77dee7656046</p>
+              </div>
+              <p>with <code>AccountId</code> 909a4b3e-f6e8-4c85-adfd-19da3823def0</p>
+              <p>with <code>Amount</code> 1000</p>
+            </div>
+            <div class="section-then">
+              <p>AccountUnblockedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 5ca7e1a0-b1cd-47cd-8ad2-ef7d587c1663</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 209b58d0-a10a-4bdb-b716-77dee7656046</p>
+              </div>
+              <p>with <code>AccountId</code> 909a4b3e-f6e8-4c85-adfd-19da3823def0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0ESAAC-5" type="checkbox" name="tabs"><label for="tab-tech-ID0ESAAC-5">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositCashTests.CanDepositCashAndUnblock</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositCashTests.CanDepositCashAndUnblock</li>
+                  <li>AccountBalanceTest.DepositCashTests.CanDepositCashAndUnblock</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0E1G"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.DepositCashTests.CannnotDepositCash_AccountDoesntExist</p>
+          <p>Nom de guerre: Account balance test. Deposit cash tests. Cannnot deposit cash Account doesnt exist</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <p>[There are no Givens]</p>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>DepositCashCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 955e7d96-05ef-49b8-b797-d6fea87c51b0</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> f40dce69-64a7-4645-8e13-6abf9db03bba</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 905934b6-1e65-40ce-aee0-6f81fa14c688</p>
+              <p>with <code>Amount</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Account does not exist</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EZG-6" type="checkbox" name="tabs"><label for="tab-tech-ID0EZG-6">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositCashTests.CannnotDepositCash_AccountDoesntExist</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositCashTests.CannnotDepositCash_AccountDoesntExist</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EEFAC"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.DepositCashTests.CannotDepositCash_IllegalAmount(am: 0)</p>
+          <p>Nom de guerre: Account balance test. Deposit cash tests. Cannot deposit cash Illegal amount(am: 0)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 08842516-094c-4860-8084-15e2d1ba815c</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> b037c51e-a80e-4234-8c22-7b95e9a3b303</p>
+              </div>
+              <p>with <code>AccountId</code> 49dae59e-6c41-4fee-b0f4-e4607666abcb</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>DepositCashCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 6627d833-edd9-4c31-969d-1316f164dbaa</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> eb4597a0-f788-4bde-8d10-bbb798e9926b</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 49dae59e-6c41-4fee-b0f4-e4607666abcb</p>
+              <p>with <code>Amount</code> 0</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Amount to deposit must be &gt; 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EDFAC-7" type="checkbox" name="tabs"><label for="tab-tech-ID0EDFAC-7">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositCashTests.CannotDepositCash_IllegalAmount(am: 0)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositCashTests.CannotDepositCash_IllegalAmount(am: 0)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EWHAC"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.DepositCashTests.CannotDepositCash_IllegalAmount(am: -100)</p>
+          <p>Nom de guerre: Account balance test. Deposit cash tests. Cannot deposit cash Illegal amount(am: -100)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 70331895-fc51-404a-b489-8d2a44d558a3</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> cb0ca445-b249-40f7-8a36-3991da194a8d</p>
+              </div>
+              <p>with <code>AccountId</code> edc752b5-d6df-4b83-b805-08d749492fac</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>DepositCashCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 98369d83-7ae2-4c03-90f9-dfd7baa82b21</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> f034225f-d388-4f13-9942-1a3b7ec251ff</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> edc752b5-d6df-4b83-b805-08d749492fac</p>
+              <p>with <code>Amount</code> -100</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Amount to deposit must be &gt; 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EVHAC-8" type="checkbox" name="tabs"><label for="tab-tech-ID0EVHAC-8">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositCashTests.CannotDepositCash_IllegalAmount(am: -100)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositCashTests.CannotDepositCash_IllegalAmount(am: -100)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EMNAC"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.DepositChequesTests.CanDepositCheque</p>
+          <p>Nom de guerre: Account balance test. Deposit cheques tests. Can deposit cheque</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> cf03d251-ce83-4a53-838e-a22d6dd31abc</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 63c1853d-f674-4d75-abfb-91aaf0e6bb34</p>
+              </div>
+              <p>with <code>AccountId</code> 978dd68e-095b-4d4a-b815-6be02a2888f8</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>DepositChequeCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 2db26f60-fa8e-48d5-b99f-43c3db66a810</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 0bbd09a4-ef49-403f-b1df-8f6004472f5e</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 978dd68e-095b-4d4a-b815-6be02a2888f8</p>
+              <p>with <code>Amount</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>ChequeDepositedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 2db26f60-fa8e-48d5-b99f-43c3db66a810</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 543bac6a-e87d-47f3-9d66-4446ddedfe7b</p>
+              </div>
+              <p>with <code>AccountId</code> 978dd68e-095b-4d4a-b815-6be02a2888f8</p>
+              <p>with <code>Amount</code> 1000</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0ELNAC-9" type="checkbox" name="tabs"><label for="tab-tech-ID0ELNAC-9">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositChequesTests.CanDepositCheque</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositChequesTests.CanDepositCheque</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0ERAAE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.DepositChequesTests.CannnotDepositCheque_AccountDoesntExist</p>
+          <p>Nom de guerre: Account balance test. Deposit cheques tests. Cannnot deposit cheque Account doesnt exist</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <p>[There are no Givens]</p>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>DepositChequeCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 0762b4ec-b28e-400f-8c19-3a8f7c086a04</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 932cb9a1-6bf8-4e44-bd55-c2f2d76f13c7</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 0525e9ec-c5f4-4afa-8ecc-1b99b8bc1d16</p>
+              <p>with <code>Amount</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Account does not exist</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EQAAE-10" type="checkbox" name="tabs"><label for="tab-tech-ID0EQAAE-10">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositChequesTests.CannnotDepositCheque_AccountDoesntExist</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositChequesTests.CannnotDepositCheque_AccountDoesntExist</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0E2EAE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.DepositChequesTests.CannotDepositCheque_IllegalAmount(am: 0)</p>
+          <p>Nom de guerre: Account balance test. Deposit cheques tests. Cannot deposit cheque Illegal amount(am: 0)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 548e320f-1059-48db-a126-644ec62a1bec</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> e9c7916e-4469-4237-8126-e10aa05abcbd</p>
+              </div>
+              <p>with <code>AccountId</code> 7ed3af1b-fea0-471c-984e-902c56e4a8c2</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>DepositChequeCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 5a48d877-09df-497c-af16-87cb564678bb</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 3fbd674f-da42-48a5-aa88-5de90171a456</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 7ed3af1b-fea0-471c-984e-902c56e4a8c2</p>
+              <p>with <code>Amount</code> 0</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Amount to deposit a cheque must be &gt; 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0E1EAE-11" type="checkbox" name="tabs"><label for="tab-tech-ID0E1EAE-11">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositChequesTests.CannotDepositCheque_IllegalAmount(am: 0)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositChequesTests.CannotDepositCheque_IllegalAmount(am: 0)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EJCAE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.DepositChequesTests.CannotDepositCheque_IllegalAmount(am: -100)</p>
+          <p>Nom de guerre: Account balance test. Deposit cheques tests. Cannot deposit cheque Illegal amount(am: -100)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 159e3dfd-3c40-41da-80e7-ebef4b757c32</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> ccc4f4e2-edbb-43b1-860b-4667a0b2268c</p>
+              </div>
+              <p>with <code>AccountId</code> 394e3a65-ad0c-4f09-a3c1-63f2c68cd0fd</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>DepositChequeCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 760267f6-e1d2-428d-a890-172e42f98d9d</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> e9719369-9057-4e01-85d9-dec797ad3f3f</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 394e3a65-ad0c-4f09-a3c1-63f2c68cd0fd</p>
+              <p>with <code>Amount</code> -100</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Amount to deposit a cheque must be &gt; 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EICAE-12" type="checkbox" name="tabs"><label for="tab-tech-ID0EICAE-12">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositChequesTests.CannotDepositCheque_IllegalAmount(am: -100)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.DepositChequesTests.CannotDepositCheque_IllegalAmount(am: -100)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0ELTAE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetOverdraftLimitTests.CannnotSetOverdraftLimit_AccountDoesntExist</p>
+          <p>Nom de guerre: Account balance test. Set overdraft limit tests. Cannnot set overdraft limit Account doesnt exist</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <p>[There are no Givens]</p>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetOverdraftLimitCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 65e26312-96c8-4e76-aae8-4a51418d81af</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 23dcc5ac-2c67-4078-968f-b61d464f366b</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 6a004ffe-0a19-472d-b22b-de1ab172f1ae</p>
+              <p>with <code>OverdraftLimit</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Account does not exist</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EKTAE-13" type="checkbox" name="tabs"><label for="tab-tech-ID0EKTAE-13">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetOverdraftLimitTests.CannnotSetOverdraftLimit_AccountDoesntExist</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetOverdraftLimitTests.CannnotSetOverdraftLimit_AccountDoesntExist</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EZQAE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetOverdraftLimitTests.CannnotSetOverdraftLimit_NegativeValue</p>
+          <p>Nom de guerre: Account balance test. Set overdraft limit tests. Cannnot set overdraft limit Negative value</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> fdf26928-c05a-42d8-9bd6-636334d769ec</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> b987f775-f38b-4d81-a9ef-b7507df4a6cf</p>
+              </div>
+              <p>with <code>AccountId</code> 5a0bb18c-1b1f-4232-a3c2-b48e37abb29f</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetOverdraftLimitCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 07caf323-501c-417a-acf1-efbfb811f563</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 528c3b04-f072-4fa2-ba70-508a2262f784</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 5a0bb18c-1b1f-4232-a3c2-b48e37abb29f</p>
+              <p>with <code>OverdraftLimit</code> -1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Overdraft limit must be &gt;= 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EYQAE-14" type="checkbox" name="tabs"><label for="tab-tech-ID0EYQAE-14">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetOverdraftLimitTests.CannnotSetOverdraftLimit_NegativeValue</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetOverdraftLimitTests.CannnotSetOverdraftLimit_NegativeValue</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0ERKAE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 0)</p>
+          <p>Nom de guerre: Account balance test. Set overdraft limit tests. Can set overdraft limit(ov limit: 0)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 0a2f2a71-5f31-46a4-9c51-5b9a4bbfee17</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 9691e341-4d12-4cec-8dd4-6c79eddb2b0a</p>
+              </div>
+              <p>with <code>AccountId</code> f1340d53-23ab-474a-a038-ce30c6ccf56d</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetOverdraftLimitCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 0a5f57b1-fb2d-4f69-a82d-bc6ab1f911a8</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> d68bf434-4855-4480-b3f8-04367d66815d</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> f1340d53-23ab-474a-a038-ce30c6ccf56d</p>
+              <p>with <code>OverdraftLimit</code> 0</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>OverdraftLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 0a5f57b1-fb2d-4f69-a82d-bc6ab1f911a8</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> a2dec42c-683e-4e5d-aec3-961159fb6832</p>
+              </div>
+              <p>with <code>AccountId</code> f1340d53-23ab-474a-a038-ce30c6ccf56d</p>
+              <p>with <code>OverdraftLimit</code> 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EQKAE-15" type="checkbox" name="tabs"><label for="tab-tech-ID0EQKAE-15">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 0)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 0)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0ENHAE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 1000)</p>
+          <p>Nom de guerre: Account balance test. Set overdraft limit tests. Can set overdraft limit(ov limit: 1000)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 31c9c8f4-5cf8-4596-8184-b991194b8c98</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 9b5ae977-be68-4cc2-8da0-f66643a91e0e</p>
+              </div>
+              <p>with <code>AccountId</code> b74b878e-0341-406c-b851-d02eddefcd0c</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetOverdraftLimitCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> ea84cb41-f759-4793-809f-f6033d1b3430</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> ae5b4e52-8132-48e0-9854-25f828da36b2</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> b74b878e-0341-406c-b851-d02eddefcd0c</p>
+              <p>with <code>OverdraftLimit</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>OverdraftLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> ea84cb41-f759-4793-809f-f6033d1b3430</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 9bab3edd-02cd-414e-b26f-247d2ad41bf8</p>
+              </div>
+              <p>with <code>AccountId</code> b74b878e-0341-406c-b851-d02eddefcd0c</p>
+              <p>with <code>OverdraftLimit</code> 1000</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EMHAE-16" type="checkbox" name="tabs"><label for="tab-tech-ID0EMHAE-16">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 1000)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 1000)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EVNAE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 1000000)</p>
+          <p>Nom de guerre: Account balance test. Set overdraft limit tests. Can set overdraft limit(ov limit: 1000000)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> a4d399d5-97cd-42a1-8c26-4da2fd74532a</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> b0ab3d4d-b70f-4c22-9098-0e467d6ad0d3</p>
+              </div>
+              <p>with <code>AccountId</code> 5c1a5c7f-e63f-4bed-a476-c397048a96f6</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetOverdraftLimitCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> e9433e3b-cdc2-44a2-b6ca-c403d8e36ae2</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 96e6d14f-b885-4c55-883f-74f5f2e4165a</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 5c1a5c7f-e63f-4bed-a476-c397048a96f6</p>
+              <p>with <code>OverdraftLimit</code> 1000000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>OverdraftLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> e9433e3b-cdc2-44a2-b6ca-c403d8e36ae2</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 6cad9b72-1fdb-4eaa-aea5-aba44100d48e</p>
+              </div>
+              <p>with <code>AccountId</code> 5c1a5c7f-e63f-4bed-a476-c397048a96f6</p>
+              <p>with <code>OverdraftLimit</code> 1000000</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EUNAE-17" type="checkbox" name="tabs"><label for="tab-tech-ID0EUNAE-17">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 1000000)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetOverdraftLimitTests.CanSetOverdraftLimit(ovLimit: 1000000)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EDVAE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetTransferLimitTests.CannnotSetTransferLimit_AccountDoesntExist</p>
+          <p>Nom de guerre: Account balance test. Set transfer limit tests. Cannnot set transfer limit Account doesnt exist</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <p>[There are no Givens]</p>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetTransferLimitCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 4e320e1e-d664-4caf-a40f-16591811b6a7</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> d0b0e2ef-e4ba-4570-ba3a-d94a9f0fe6f3</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> fe824178-9869-4762-83ea-c5b30a6e3b4b</p>
+              <p>with <code>TransferLimit</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Account does not exist</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0ECVAE-18" type="checkbox" name="tabs"><label for="tab-tech-ID0ECVAE-18">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetTransferLimitTests.CannnotSetTransferLimit_AccountDoesntExist</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetTransferLimitTests.CannnotSetTransferLimit_AccountDoesntExist</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EIAAG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetTransferLimitTests.CannnotSetTransferLimit_NegativeValue</p>
+          <p>Nom de guerre: Account balance test. Set transfer limit tests. Cannnot set transfer limit Negative value</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 721b36f1-0219-42ac-87df-c86576b7ab9c</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> a47b9011-5bbf-4552-b71f-3bc7eb35e672</p>
+              </div>
+              <p>with <code>AccountId</code> da57d4c0-9bb2-4f85-a232-9628780c73ce</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetTransferLimitCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 254e803a-b58d-4cb1-8540-beb93e651163</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> ac6238e6-a3a6-47eb-be07-26621b8be2d5</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> da57d4c0-9bb2-4f85-a232-9628780c73ce</p>
+              <p>with <code>TransferLimit</code> -1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Transfer limit must be &gt;= 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EHAAG-19" type="checkbox" name="tabs"><label for="tab-tech-ID0EHAAG-19">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetTransferLimitTests.CannnotSetTransferLimit_NegativeValue</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetTransferLimitTests.CannnotSetTransferLimit_NegativeValue</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0E2WAE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 0)</p>
+          <p>Nom de guerre: Account balance test. Set transfer limit tests. Can set transfer limit(tr limit: 0)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 421773a4-f94f-484c-9e32-302c2fdef42b</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 2f79d53f-ef3c-4292-85db-6e8d6aa0eb89</p>
+              </div>
+              <p>with <code>AccountId</code> 1ebcd29f-9a6b-41b9-bb0f-df461a820621</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetTransferLimitCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 6609dbce-2f62-4041-b2b9-5988fca86588</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 9a7df179-5252-4544-b211-b1f0616e90bf</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 1ebcd29f-9a6b-41b9-bb0f-df461a820621</p>
+              <p>with <code>TransferLimit</code> 0</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>TransferLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 6609dbce-2f62-4041-b2b9-5988fca86588</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 1fb99af4-cec4-45f9-b888-7c318ebb0301</p>
+              </div>
+              <p>with <code>AccountId</code> 1ebcd29f-9a6b-41b9-bb0f-df461a820621</p>
+              <p>with <code>TransferLimit</code> 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0E1WAE-20" type="checkbox" name="tabs"><label for="tab-tech-ID0E1WAE-20">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 0)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 0)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0E6ZAE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 1000)</p>
+          <p>Nom de guerre: Account balance test. Set transfer limit tests. Can set transfer limit(tr limit: 1000)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> c2d67100-4cc1-4748-9ae6-390902b838fa</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> fb625140-49d5-4571-85a8-9d627efeec8e</p>
+              </div>
+              <p>with <code>AccountId</code> 80766f57-d72f-497f-a879-ba834511730b</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetTransferLimitCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> b4d4457f-1484-42a2-a327-414c004bc290</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> a4d20634-5f56-47a8-ab1f-71c830ac41ad</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 80766f57-d72f-497f-a879-ba834511730b</p>
+              <p>with <code>TransferLimit</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>TransferLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> b4d4457f-1484-42a2-a327-414c004bc290</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 18e0af6c-41e3-435f-82a5-77bd8931616a</p>
+              </div>
+              <p>with <code>AccountId</code> 80766f57-d72f-497f-a879-ba834511730b</p>
+              <p>with <code>TransferLimit</code> 1000</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0E5ZAE-21" type="checkbox" name="tabs"><label for="tab-tech-ID0E5ZAE-21">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 1000)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 1000)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0ED4AE"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 1000000)</p>
+          <p>Nom de guerre: Account balance test. Set transfer limit tests. Can set transfer limit(tr limit: 1000000)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> ab836dd5-d03f-4b28-a67c-c690d18a1ac5</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> dd93299b-9a5c-4730-bc55-92f5d2ad8133</p>
+              </div>
+              <p>with <code>AccountId</code> 0c06a15c-d521-49f6-96dc-41c2cdb7dd2e</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetTransferLimitCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 91312aad-7e2a-479e-93c6-03f48f3f615f</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 46103b86-b6b7-49bc-b163-f6841439476c</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 0c06a15c-d521-49f6-96dc-41c2cdb7dd2e</p>
+              <p>with <code>TransferLimit</code> 1000000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>TransferLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 91312aad-7e2a-479e-93c6-03f48f3f615f</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> eb055664-5450-4dc0-bb04-eeab21047ba5</p>
+              </div>
+              <p>with <code>AccountId</code> 0c06a15c-d521-49f6-96dc-41c2cdb7dd2e</p>
+              <p>with <code>TransferLimit</code> 1000000</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EC4AE-22" type="checkbox" name="tabs"><label for="tab-tech-ID0EC4AE-22">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 1000000)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetTransferLimitTests.CanSetTransferLimit(trLimit: 1000000)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0E1CAG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetupAccountDailyTests.CannotSetupAccountDaily_AccountDoesntExist</p>
+          <p>Nom de guerre: Account balance test. Setup account daily tests. Cannot setup account daily Account doesnt exist</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <p>[There are no Givens]</p>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetupAccountDailyCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> e8312176-04d3-4ed6-9566-9686ee8b11f0</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> c9e3d86d-0842-4901-8d35-5d3f88de9ebd</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 7cf6d9b0-e91e-44b2-b58f-866aa49f3160</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Account does not exist</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EZCAG-23" type="checkbox" name="tabs"><label for="tab-tech-ID0EZCAG-23">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetupAccountDailyTests.CannotSetupAccountDaily_AccountDoesntExist</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetupAccountDailyTests.CannotSetupAccountDaily_AccountDoesntExist</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EOEAG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetupAccountDailyTests.CanSetupAccountDaily</p>
+          <p>Nom de guerre: Account balance test. Setup account daily tests. Can setup account daily</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> b67ec831-5300-400e-9d84-141b19081904</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 62edce3e-f89d-4e60-975f-2efd757d6ecf</p>
+              </div>
+              <p>with <code>AccountId</code> 881ac99e-ccb0-41bb-97ab-bd7d69f6bcd2</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+            <div class="section-given">
+              <p>ChequeDepositedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 90814cc5-60ff-4e5e-879c-499109f502b0</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 1f84b833-40b6-4f02-8221-b80cff471878</p>
+              </div>
+              <p>with <code>AccountId</code> 881ac99e-ccb0-41bb-97ab-bd7d69f6bcd2</p>
+              <p>with <code>Amount</code> 100</p>
+            </div>
+            <div class="section-given">
+              <p>ChequeDepositedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 42458ea7-1e8a-437e-8878-3afca3a26cde</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 7813daf1-6cf9-43f9-a65f-406ef0fae243</p>
+              </div>
+              <p>with <code>AccountId</code> 881ac99e-ccb0-41bb-97ab-bd7d69f6bcd2</p>
+              <p>with <code>Amount</code> 200</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetupAccountDailyCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> ca6663d4-51bb-407e-ad23-2a9a962b9da3</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> f52d15e0-1aee-48d3-9130-44a86fddb710</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 881ac99e-ccb0-41bb-97ab-bd7d69f6bcd2</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>ChequesClearedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> ca6663d4-51bb-407e-ad23-2a9a962b9da3</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> e7b7a5fa-6e54-45ea-b560-36c3838a5d0d</p>
+              </div>
+              <p>with <code>AccountId</code> 881ac99e-ccb0-41bb-97ab-bd7d69f6bcd2</p>
+              <p>with <code>Amount</code> 300</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0ENEAG-24" type="checkbox" name="tabs"><label for="tab-tech-ID0ENEAG-24">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetupAccountDailyTests.CanSetupAccountDaily</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.SetupAccountDailyTests.CanSetupAccountDaily</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0ECJAG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.SetupAccountDailyTests.CanSetupAccountDaily_NoPendingAmount</p>
+          <p>Nom de guerre: Account balance test. Setup account daily tests. Can setup account daily No pending amount</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> e17b8bd5-310f-468d-bae7-d6f2f0da4b9c</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 22df29fc-7e69-40b7-a35e-1406c5cf7c7b</p>
+              </div>
+              <p>with <code>AccountId</code> 2175af3d-d3fe-40d9-9e26-b243664440b2</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>SetupAccountDailyCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 5b0aa625-988e-41be-ac7e-c557cc25ec43</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 03f9f19f-e9b0-4a2c-bd17-f201944ec8d9</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 2175af3d-d3fe-40d9-9e26-b243664440b2</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <p>[There are no Thens]</p>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EBJAG-25" type="checkbox" name="tabs"><label for="tab-tech-ID0EBJAG-25">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.SetupAccountDailyTests.CanSetupAccountDaily_NoPendingAmount</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EJ3AG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WireTranferTests.CannnotWireTransfer_AccountDoesntExist</p>
+          <p>Nom de guerre: Account balance test. Wire tranfer tests. Cannnot wire transfer Account doesnt exist</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <p>[There are no Givens]</p>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawWireTransferCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 388ae49c-fd09-4732-8dc3-249c156f0b68</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> c956187a-59c9-4037-9b04-1c858a617907</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> a009eeef-dbb3-48ae-992a-60e75fff5444</p>
+              <p>with <code>Amount</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Account does not exist</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EI3AG-26" type="checkbox" name="tabs"><label for="tab-tech-ID0EI3AG-26">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CannnotWireTransfer_AccountDoesntExist</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CannnotWireTransfer_AccountDoesntExist</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EHLAG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_DailyLimitIsExceeded</p>
+          <p>Nom de guerre: Account balance test. Wire tranfer tests. Cannnot withddraw wire transfer Daily limit is exceeded</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> b746208a-7c2b-43c6-b47f-dda120486c49</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> bc29fe9b-64a5-4f21-ba74-169951b37794</p>
+              </div>
+              <p>with <code>AccountId</code> 7bfcc75a-780e-4176-8f67-63b61ab5182a</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+            <div class="section-given">
+              <p>TransferLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 700f0a34-7acd-4924-b8e8-b64544c2eac2</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 00588101-fcd2-4dcf-8f2e-aa214428dbbe</p>
+              </div>
+              <p>with <code>AccountId</code> 7bfcc75a-780e-4176-8f67-63b61ab5182a</p>
+              <p>with <code>TransferLimit</code> 100</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawWireTransferCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 6fadafac-a0b3-4ebd-8656-4b2acab55bb2</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> e6a50e25-ebe1-4008-84d5-fe0c3cdabea8</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 7bfcc75a-780e-4176-8f67-63b61ab5182a</p>
+              <p>with <code>Amount</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>AccountBlockedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 6fadafac-a0b3-4ebd-8656-4b2acab55bb2</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> c74a73de-eec8-4c79-b87f-54098f33cc53</p>
+              </div>
+              <p>with <code>AccountId</code> 7bfcc75a-780e-4176-8f67-63b61ab5182a</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EGLAG-27" type="checkbox" name="tabs"><label for="tab-tech-ID0EGLAG-27">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_DailyLimitIsExceeded</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_DailyLimitIsExceeded</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0ENSAG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_IllegalAmount(am: 0)</p>
+          <p>Nom de guerre: Account balance test. Wire tranfer tests. Cannnot withddraw wire transfer Illegal amount(am: 0)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 9d0fbd9e-5e76-4dbe-a39b-c9286b812b10</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> d62d6161-81ca-4221-a9c6-477ef7b22eeb</p>
+              </div>
+              <p>with <code>AccountId</code> 15e7f284-5f02-481e-9272-51204a56c999</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+            <div class="section-given">
+              <p>TransferLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 9450ce05-998d-4e4a-82b1-1c640cf16e44</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> ec950a8f-7830-41f4-a890-7d340500df25</p>
+              </div>
+              <p>with <code>AccountId</code> 15e7f284-5f02-481e-9272-51204a56c999</p>
+              <p>with <code>TransferLimit</code> 100</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawWireTransferCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 19d5c792-6091-40d6-b56a-95c9204b2076</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 7e089545-ead3-4e0c-b94b-2e53ddefb01d</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 15e7f284-5f02-481e-9272-51204a56c999</p>
+              <p>with <code>Amount</code> 0</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Wire transfer amount must be &gt; 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EMSAG-28" type="checkbox" name="tabs"><label for="tab-tech-ID0EMSAG-28">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_IllegalAmount(am: 0)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_IllegalAmount(am: 0)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EBPAG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_IllegalAmount(am: -100)</p>
+          <p>Nom de guerre: Account balance test. Wire tranfer tests. Cannnot withddraw wire transfer Illegal amount(am: -100)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 8a48ec7d-2faa-45e8-bb8a-af7ad8162ea3</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> adf45bff-c44d-4755-8b53-af3ca3aae3e3</p>
+              </div>
+              <p>with <code>AccountId</code> fda10563-27dc-4972-8659-54c0496265c9</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+            <div class="section-given">
+              <p>TransferLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> f19c31de-a174-43e0-9e63-18e16d315917</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 7d74cf12-e248-4ba5-9349-a1bd4ed07a0a</p>
+              </div>
+              <p>with <code>AccountId</code> fda10563-27dc-4972-8659-54c0496265c9</p>
+              <p>with <code>TransferLimit</code> 100</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawWireTransferCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 1b0ebb83-d358-4c20-a7c0-2908b0d6e8aa</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> d576923b-801c-44a2-bd0b-d844c186ec28</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> fda10563-27dc-4972-8659-54c0496265c9</p>
+              <p>with <code>Amount</code> -100</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Wire transfer amount must be &gt; 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EAPAG-29" type="checkbox" name="tabs"><label for="tab-tech-ID0EAPAG-29">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_IllegalAmount(am: -100)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_IllegalAmount(am: -100)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EZVAG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_LimitIsNotSet</p>
+          <p>Nom de guerre: Account balance test. Wire tranfer tests. Cannnot withddraw wire transfer Limit is not set</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 9a0330e4-ce0b-40da-8e51-1f779ae5d1a0</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 4c3d0cc5-7f12-4b15-bcd3-f7d05d6698aa</p>
+              </div>
+              <p>with <code>AccountId</code> f09ab01a-5b4d-4c11-bcbb-cf8be0fbb776</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawWireTransferCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 2049ccad-1550-4f31-a9a9-706bd53ac193</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 962ac344-a22f-4d41-83e6-2a0eca9ca7e5</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> f09ab01a-5b4d-4c11-bcbb-cf8be0fbb776</p>
+              <p>with <code>Amount</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Wire transfer limit is set to 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EYVAG-30" type="checkbox" name="tabs"><label for="tab-tech-ID0EYVAG-30">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_LimitIsNotSet</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CannnotWithddrawWireTransfer_LimitIsNotSet</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0ELYAG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WireTranferTests.CanWithddrawWireTransfer</p>
+          <p>Nom de guerre: Account balance test. Wire tranfer tests. Can withddraw wire transfer</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 5f9a8944-f888-42b9-831b-9fb82be383b3</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> bc9e8558-2b9e-4a27-9a04-a9a1043827be</p>
+              </div>
+              <p>with <code>AccountId</code> 17f2e1e7-ff96-4a6d-8308-2999db155d95</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+            <div class="section-given">
+              <p>TransferLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> b33e0cb0-3bf8-4eba-9be4-b69a86fbfde1</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 0bf1c07a-5bed-49de-b186-90d8ab8c429e</p>
+              </div>
+              <p>with <code>AccountId</code> 17f2e1e7-ff96-4a6d-8308-2999db155d95</p>
+              <p>with <code>TransferLimit</code> 100</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawWireTransferCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> b170cf2e-e1aa-463b-be6d-92c01530b186</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 68e179f1-44af-40dc-a0a8-ede0ab141eb2</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 17f2e1e7-ff96-4a6d-8308-2999db155d95</p>
+              <p>with <code>Amount</code> 50</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>AmountWithdrawnEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> b170cf2e-e1aa-463b-be6d-92c01530b186</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 24cb8534-877f-4e28-9f67-25d7f63b5f1f</p>
+              </div>
+              <p>with <code>AccountId</code> 17f2e1e7-ff96-4a6d-8308-2999db155d95</p>
+              <p>with <code>Amount</code> 50</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EKYAG-31" type="checkbox" name="tabs"><label for="tab-tech-ID0EKYAG-31">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CanWithddrawWireTransfer</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WireTranferTests.CanWithddrawWireTransfer</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EBLBG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WithdrawCashTests.CannnotWithdrawCash_AccountDoesntExist</p>
+          <p>Nom de guerre: Account balance test. Withdraw cash tests. Cannnot withdraw cash Account doesnt exist</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <p>[There are no Givens]</p>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawCashCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 43f3ec4b-ecf9-4b48-9b4b-bbde95ffc284</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> a9f053d7-f626-4c8f-a786-2355e42ac837</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 543d1e06-b8a7-405e-8523-476405f87d7e</p>
+              <p>with <code>Amount</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Account does not exist</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EALBG-32" type="checkbox" name="tabs"><label for="tab-tech-ID0EALBG-32">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CannnotWithdrawCash_AccountDoesntExist</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CannnotWithdrawCash_AccountDoesntExist</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EZMBG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_EverdraftLimitexceeded</p>
+          <p>Nom de guerre: Account balance test. Withdraw cash tests. Cannot withdraw cash Everdraft limitexceeded</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 72525774-3928-4181-8ca7-e4dec9c0454b</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 019ba86c-8d2f-4c56-b648-acafe0dda96c</p>
+              </div>
+              <p>with <code>AccountId</code> 673e6ce2-0558-41ee-b2ea-3f28478f7a6f</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+            <div class="section-given">
+              <p>OverdraftLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> b99af737-afae-4a6f-b204-c9b5568350bc</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 6099b1be-e447-438e-8abf-37d8267a0e4d</p>
+              </div>
+              <p>with <code>AccountId</code> 673e6ce2-0558-41ee-b2ea-3f28478f7a6f</p>
+              <p>with <code>OverdraftLimit</code> 1000</p>
+            </div>
+            <div class="section-given">
+              <p>AmountDepositedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> bedf2db1-8589-4271-b936-14442d5b10e2</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> c016686b-f96d-47f8-b53d-0aaa33912607</p>
+              </div>
+              <p>with <code>AccountId</code> 673e6ce2-0558-41ee-b2ea-3f28478f7a6f</p>
+              <p>with <code>Amount</code> 100</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawCashCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 90784340-2c7b-4ce7-9933-c73b0c7a496c</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 5012202d-b40c-42a7-974d-677854489c11</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 673e6ce2-0558-41ee-b2ea-3f28478f7a6f</p>
+              <p>with <code>Amount</code> 2000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>AccountBlockedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 90784340-2c7b-4ce7-9933-c73b0c7a496c</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 1c8b400c-71f6-45d3-867c-4871e2200dad</p>
+              </div>
+              <p>with <code>AccountId</code> 673e6ce2-0558-41ee-b2ea-3f28478f7a6f</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EYMBG-33" type="checkbox" name="tabs"><label for="tab-tech-ID0EYMBG-33">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_EverdraftLimitexceeded</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_EverdraftLimitexceeded</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0ETABG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_IllegalAmount(am: 0)</p>
+          <p>Nom de guerre: Account balance test. Withdraw cash tests. Cannot withdraw cash Illegal amount(am: 0)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 9017656e-629e-4a07-8c9a-d543400d5f6a</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 42d1116f-cd31-4659-9d80-67faeccf2986</p>
+              </div>
+              <p>with <code>AccountId</code> 9b382b8d-dfe0-4288-b4b2-003f4fb2aacb</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawCashCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> c97eff6a-2886-495f-b974-4e7456ea7861</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 11aba145-9629-4943-999a-90ad199281ee</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 9b382b8d-dfe0-4288-b4b2-003f4fb2aacb</p>
+              <p>with <code>Amount</code> 0</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Amount to withdraw must be &gt; 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0ESABG-34" type="checkbox" name="tabs"><label for="tab-tech-ID0ESABG-34">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_IllegalAmount(am: 0)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_IllegalAmount(am: 0)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EB5AG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_IllegalAmount(am: -100)</p>
+          <p>Nom de guerre: Account balance test. Withdraw cash tests. Cannot withdraw cash Illegal amount(am: -100)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 4cc975aa-a2a8-490e-a5db-766aa89d9ac0</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 8a1b79e8-d148-42a7-b57e-18a80f0487a6</p>
+              </div>
+              <p>with <code>AccountId</code> f91f7418-13e2-4d24-8ae3-eb5a784317a0</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawCashCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 33d9deca-8061-4b94-82ba-b6351baf2bd8</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 2d57aae0-5596-4a65-9864-1f479c7e42c6</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> f91f7418-13e2-4d24-8ae3-eb5a784317a0</p>
+              <p>with <code>Amount</code> -100</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>Exception</p>
+              <p>with <code>Message</code> Amount to withdraw must be &gt; 0</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EA5AG-35" type="checkbox" name="tabs"><label for="tab-tech-ID0EA5AG-35">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_IllegalAmount(am: -100)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CannotWithdrawCash_IllegalAmount(am: -100)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EDHBG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WithdrawCashTests.CanWithdrawCash(am: 10)</p>
+          <p>Nom de guerre: Account balance test. Withdraw cash tests. Can withdraw cash(am: 10)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> ade486b7-f195-4487-ad9e-e5d5bf3ad114</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> db8d4f28-b2ed-4567-ae7e-9674f91ad3b4</p>
+              </div>
+              <p>with <code>AccountId</code> 26b7ba04-dc47-42b6-9285-8fcd15f7c55e</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+            <div class="section-given">
+              <p>OverdraftLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> b9e971e1-a5e4-4861-9e5f-d9d2ec431ec9</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 6d326cbb-ec58-4fb3-9183-0abe5a25ef2f</p>
+              </div>
+              <p>with <code>AccountId</code> 26b7ba04-dc47-42b6-9285-8fcd15f7c55e</p>
+              <p>with <code>OverdraftLimit</code> 1000</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawCashCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 258c1355-ea43-4a44-a85b-b04b69d318cc</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> b94bceb8-851e-440c-b5f1-35a1d1aab646</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> 26b7ba04-dc47-42b6-9285-8fcd15f7c55e</p>
+              <p>with <code>Amount</code> 10</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>AmountWithdrawnEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 258c1355-ea43-4a44-a85b-b04b69d318cc</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> c3ac3b56-a3f7-4cc7-9b68-fe2ecafcafb3</p>
+              </div>
+              <p>with <code>AccountId</code> 26b7ba04-dc47-42b6-9285-8fcd15f7c55e</p>
+              <p>with <code>Amount</code> 10</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0ECHBG-36" type="checkbox" name="tabs"><label for="tab-tech-ID0ECHBG-36">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CanWithdrawCash(am: 10)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CanWithdrawCash(am: 10)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section><a name="ID0EFDBG"></a><section class="section-scenario"><h3>Scenario</h3>
+          <p>Name: AccountBalanceTest.WithdrawCashTests.CanWithdrawCash(am: 1000)</p>
+          <p>Nom de guerre: Account balance test. Withdraw cash tests. Can withdraw cash(am: 1000)</p>
+          <div class="section-givens">
+            <h4>Given</h4>
+            <div class="section-given">
+              <p>AccountCreatedEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> 88457013-262d-4272-96a8-fb3e7114b07f</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> c465edfa-33ce-45fe-b6f2-fd3436db5ed8</p>
+              </div>
+              <p>with <code>AccountId</code> c88e7de7-3350-418b-9a0c-caa105243a4b</p>
+              <p>with <code>AccountHolderName</code> AAA</p>
+            </div>
+            <div class="section-given">
+              <p>OverdraftLimitIsSetEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> eaa6dd00-5b6f-431b-9e7a-8cf214faeef9</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> cf6934ec-0bd6-4f85-8487-75d7727386d9</p>
+              </div>
+              <p>with <code>AccountId</code> c88e7de7-3350-418b-9a0c-caa105243a4b</p>
+              <p>with <code>OverdraftLimit</code> 1000</p>
+            </div>
+          </div>
+          <div class="section-whens">
+            <h4>When</h4>
+            <div class="section-when">
+              <p>WithdrawCashCommand</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> c7d1e9f6-3b88-47c6-8d7e-40ef2fa82077</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> 0a02a978-17d3-4f08-9ea0-26229f67f56d</p>
+              </div>
+              <p>with <code>IsCanceled</code> False</p>
+              <p>with <code>IsCancelable</code> False</p>
+              <p>with <code>AccountId</code> c88e7de7-3350-418b-9a0c-caa105243a4b</p>
+              <p>with <code>Amount</code> 1000</p>
+              <p>with <code>TimeoutTcpWait</code> True</p>
+              <p>with <code>CancellationToken</code> </p>
+            </div>
+          </div>
+          <div class="section-thens">
+            <h4>Then</h4>
+            <div class="section-then">
+              <p>AmountWithdrawnEvent</p>
+              <div class="arrow"></div>
+              <div class="nested-child">
+                <p>CorrelationId</p>
+                <p>with <code>Id</code> c7d1e9f6-3b88-47c6-8d7e-40ef2fa82077</p>
+              </div>
+              <div class="nested-child">
+                <p>SourceId</p>
+                <p>with <code>Id</code> a520e273-a42d-443f-a675-0be3f3321b84</p>
+              </div>
+              <p>with <code>AccountId</code> c88e7de7-3350-418b-9a0c-caa105243a4b</p>
+              <p>with <code>Amount</code> 1000</p>
+            </div>
+          </div>
+          <div class="accordion tech">
+            <div class="tab"><input id="tab-tech-ID0EEDBG-37" type="checkbox" name="tabs"><label for="tab-tech-ID0EEDBG-37">Nerd Area</label><div class="tab-content">
+                <p>Scenario Scope</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CanWithdrawCash(am: 1000)</li>
+                </ul>
+                <p>Then Scope(s)</p>
+                <ul>
+                  <li>AccountBalanceTest.WithdrawCashTests.CanWithdrawCash(am: 1000)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p><a href="#top">Back to top</a></p></section></div>
+    </div>
+  </body>
+</html>
+  </body>
+</html>

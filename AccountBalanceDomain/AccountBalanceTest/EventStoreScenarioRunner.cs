@@ -80,7 +80,7 @@ namespace AccountBalanceTest
             // If running in debugger...
             try
             {
-                _bus.Fire(when);
+                _bus.Send(when);
             }
             catch (CommandException ex)
             {

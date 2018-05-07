@@ -13,7 +13,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)xunit.runner.visualstudio\2.3.1\build\net20\xunit.runner.visualstudio.props" Condition="Exists('$(NuGetPackageRoot)xunit.runner.visualstudio\2.3.1\build\net20\xunit.runner.visualstudio.props')" />
+    <Import Project="$(NuGetPackageRoot)xunit.runner.visualstudio\2.4.0-beta.1.build3958\build\net20\xunit.runner.visualstudio.props" Condition="Exists('$(NuGetPackageRoot)xunit.runner.visualstudio\2.4.0-beta.1.build3958\build\net20\xunit.runner.visualstudio.props')" />
     <Import Project="$(NuGetPackageRoot)xunit.core\2.3.1\build\xunit.core.props" Condition="Exists('$(NuGetPackageRoot)xunit.core\2.3.1\build\xunit.core.props')" />
   </ImportGroup>
 </Project>

@@ -1,5 +1,4 @@
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\bin\Debug\net462\AccountBalanceDomain.dll
-C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\obj\Debug\net462\AccountBalanceDomain.csprojResolveAssemblyReference.cache
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\obj\Debug\net462\AccountBalanceDomain.csproj.CoreCompileInputs.cache
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\obj\Debug\net462\AccountBalanceDomain.AssemblyInfoInputs.cache
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\obj\Debug\net462\AccountBalanceDomain.AssemblyInfo.cs
@@ -18,10 +17,8 @@ C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBa
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\bin\Debug\net462\System.Reactive.PlatformServices.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\bin\Debug\net462\System.Reactive.Windows.Threading.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\bin\Debug\net462\Splat.dll
-C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\bin\Debug\net462\xunit.abstractions.dll
-C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\bin\Debug\net462\xunit.core.dll
-C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\bin\Debug\net462\xunit.execution.desktop.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\obj\Debug\net462\AccountBalanceDomain.csproj.CopyComplete
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\obj\Debug\net462\AccountBalanceDomain.dll
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\obj\Debug\net462\AccountBalanceDomain.pdb
 C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\bin\Debug\net462\NodaTime.dll
+C:\Users\NBabkina\Develops\AccountBalanceTraining\AccountBalanceDomain\AccountBalanceDomain\obj\Debug\net462\AccountBalanceDomain.csprojResolveAssemblyReference.cache

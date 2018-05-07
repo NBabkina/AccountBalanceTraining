@@ -170,6 +170,7 @@ namespace AccountBalanceDomain
             if (amount <= (_transfer_limit - _used_transfer_limit))
             {
                 _used_transfer_limit += amount;
+
                 this.Raise(new AmountWithdrawnEvent(source)
                 {
                     AccountId = this.Id,
